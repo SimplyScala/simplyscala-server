@@ -3,8 +3,6 @@ package fr.simply
 import org.simpleframework.http.core.Container
 import org.simpleframework.http.Response
 import org.simpleframework.http.Request
-import org.simpleframework.transport.connect.{Connection, SocketConnection}
-import java.net.{SocketAddress, InetSocketAddress}
 
 object SimplyScala extends App {
     //val connection = startServer(8080)
@@ -33,53 +31,10 @@ object SimplyScala extends App {
             params = Map("param1" -> "toto", "param2" -> "tata")
     )
 
-    new StubServer(8080, route).start
+    new StubServer(8080/*, route*/).start		// il faut pouvoir requeter une plage de port dispo si un ne passe pas et que l'utilisateur puisse le réccup pour la conf de son code de prod
     // val stubServer = stubServer(8080, route).defaultResponse(contentType, body).start
     // stubServer.stop
     // stubServer.addRoute(route).dropRoute(route)   //restart ??? avant start ???
-}
-
-case class ServerRoute(restVerb: RestVerb, path: String, response: ServerResponse, params: Map[String,String] = Map())
-case class ServerResponse(contentType: String, body: String, code: Int)
-
-trait RestVerb
-
-case object get extends RestVerb {
-    override def toString = "GET"
-}
-case object post extends RestVerb
-
-object GET {
-    def apply(path: String, response: ServerResponse, params: Map[String,String] = Map()): ServerRoute =
-        ServerRoute(get, path, response, params)
-}
-
-class StubServer(port: Int, routes: ServerRoute*) {
-    private var defaultResponse = ServerResponse("text/plain", "error", 404)
-
-    private var simplyServer: Connection = _
-
-    def start: StubServer = {
-        this.simplyServer = startServer
-        this
-    }
-
-    def stop = if(simplyServer != null) simplyServer.close()
-
-    def defaultReponse(contentType: String, body: String, responseCode: Int): StubServer = {
-        this.defaultResponse = ServerResponse(contentType, body, responseCode)
-        this
-    }
-
-    private def startServer: Connection = {
-        val container = new SimplyScala(defaultResponse, routes.toList)
-        val connection: Connection = new SocketConnection(container)
-        val address: SocketAddress = new InetSocketAddress(port)
-
-        connection.connect(address)
-
-        connection
-    }
 }
 
 class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) extends Container {
@@ -98,7 +53,6 @@ class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) ex
         response.close()
     }
 
-
     private def requestMatchWithRoute(request: Request, response: Response, routes: List[ServerRoute]): Boolean = {
         routes.exists {
             route =>
@@ -112,18 +66,18 @@ class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) ex
     }
 
     private def defaultReponse(response: Response, request: Request) {
+        println("defaultResponse")
         response.set("Content-Type", defaultResponse.contentType)
         response.setCode(defaultResponse.code)
         response.getPrintStream.println(defaultResponse.body)
-        response.getPrintStream.println("names : " + request.getNames)
+        /*response.getPrintStream.println("names : " + request.getNames)
         response.getPrintStream.println("attributes : " + request.getAttributes)
         response.getPrintStream.println("parameters : " + request.getParameter("param1"))
         response.getPrintStream.println("request path : " + request.getPath.getPath)
-        response.getPrintStream.println("request verb : " + request.getMethod + "\n")
+        response.getPrintStream.println("request verb : " + request.getMethod + "\n")*/
 
-
-        response.getPrintStream.println("verb : " + routes.head.restVerb)
-        response.getPrintStream.println("path : " + routes.head.path)
+        /*response.getPrintStream.println("verb : " + routes.head.restVerb)
+        response.getPrintStream.println("path : " + routes.head.path)*/
     }
 
     private def testRoute(request: Request, route: ServerRoute): Boolean = {
