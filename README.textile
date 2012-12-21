@@ -7,9 +7,21 @@ h2. Usage
 
 h3. Basic Usage
 
+<pre>
 <code>
-    new StubServer(8080).start
-    new StubServer(8080).stop
+    val server = new StubServer(8080).start
+    server.stop
+</code>
+</pre>
+
+By default, with no routes defined, SimplyScala server return a 404 text/plain reponse with "error" in body
+
+h3. GET request with custom default response
+
+You can defined your own server's default response like this :
+
+<code>
+    val server = new StubServer(8080).defaultResponse("text/plain", "default", 400).start
 </code>
 
 h3. GET request with param
@@ -28,8 +40,17 @@ h3. GET request with param
 
 when you request <code>http://localhost:8080/test?param1=toto</code>, server return http code 200, with text/plain body containing "yo" response
 
-h3. GET request with default response
+h3. What to do when port chosen is in used
 
-h3. what to do when port chosen is in used
+Before create the server's instance, SimplyScala check if the port you defined is not already in use.
+If it is the case, SimplyScala try the next value (+1) port to start the server.
+You can retrieve the effectiveness port in use like this :
+
+<pre>
+<code>
+    val server = new StubServer(8080).start
+    server.portInUse    // perhaps 8081
+</code>
+</pre>
 
 h2. Uses in test context
