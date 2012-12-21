@@ -17,10 +17,10 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
         RestAssured
             .expect()
-            .statusCode(404)
-            .body(containsString("error"))
+                .statusCode(404)
+                .body(containsString("error"))
             .when()
-            .get("http://localhost:8080/")
+                .get("http://localhost:8080/")
     }
 
     test("[GET] test user default response") {
@@ -28,17 +28,17 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
         RestAssured
             .expect()
-            .statusCode(400)
-            .body(containsString("default"))
+                .statusCode(400)
+                .body(containsString("default"))
             .when()
-            .get("http://localhost:8080/")
+                .get("http://localhost:8080/")
     }
 
     test("[GET] simple GET request with one param") {
         val route = GET (
             path = "/test",                 // pattern pour les paths
-            response = ServerResponse("text/plain", "yo", 200),
-            params = Map("param1" -> "toto")
+            params = Map("param1" -> "toto"),
+            response = ServerResponse("text/plain", "yo", 200)
         )
 
         server = new StubServer(8080, route).start
@@ -66,39 +66,12 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
                 .get("http://localhost:8080/testMe")
     }
 
+    test("use available port to start server") {
+        server = new StubServer(8080).start
+        server.portInUse should be (8080)
 
-    // TODO pattern pour le path
-    // TODO plage de port dispo et retour à l'utilisateur
-                // TODO si port pas dispo prend le prochain etc...
-
-    /*//val connection = startServer(8080)
-
-    // server(8080) et passer aussi les routes
-    /**
-     * routes :
-     *  val route = GET {
-     *          path = /rest/url            // si rien alors n'importe quel path
-     *          param1 = value1
-     *          param2 = value2
-     *          response {                            // mandatory ??
-     *              contentType = text/plain
-     *              body = "Hello World !"
-     *          }
-     *      }
-     *
-     *      POST {
-     *
-     *      }
-     */
-
-    val route = GET (
-        path = "/test",                 // pattern pour les paths
-        response = ServerResponse("text/plain", "yo ça marche !!", 200),
-        params = Map("param1" -> "toto", "param2" -> "tata")
-    )
-
-    new StubServer(8080, route).start		// il faut pouvoir requeter une plage de port dispo si un ne passe pas et que l'utilisateur puisse le réccup pour la conf de son code de prod
-    // val stubServer = stubServer(8080, route).defaultResponse(contentType, body).start
-    // stubServer.stop
-    // stubServer.addRoute(route).dropRoute(route)   //restart ??? avant start ???*/
+        val otherServer = new StubServer(8080).start
+        otherServer.portInUse should be (8081)
+        otherServer.stop
+    }
 }
