@@ -13,6 +13,21 @@ h2. RoadMap
 * PUT  request                                      TODO
 * HEAD request                                      TODO
 
+h2. Installation
+
+h3. Git repo
+
+SimplyScala is a SBT project.
+It use 0.12 sbt version
+
+h3. Maven dependency
+
+coming soon !
+
+h3. SBT dependency
+
+coming soon !
+
 h2. Usage
 
 h3. Basic Usage
