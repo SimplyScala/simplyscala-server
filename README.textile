@@ -1,7 +1,17 @@
-h2. SimplyScala
+h1. SimplyScala
 
 This project provide a fast & tiny http server ( [simpleframework](http://www.simpleframework.org/) )
 with useful API to define server's routes (request-response), start & stop server.
+
+h2. RoadMap
+
+* custom server's default response                  OK
+* GET request with params                           OK
+* use * pattern for path route param                OK
+* check if chosen port was not already used         OK
+* POST request                                      TODO
+* PUT  request                                      TODO
+* HEAD request                                      TODO
 
 h2. Usage
 
