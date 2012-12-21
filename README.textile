@@ -1,0 +1,33 @@
+h2. SimplyScala
+
+This project provide a fast & tiny http server ( [simpleframework](http://www.simpleframework.org/) )
+with useful API to define server's routes (request-response), start & stop server.
+
+h2. Usage
+
+h3. Basic Usage
+
+<code>
+    new StubServer(8080).start
+    new StubServer(8080).stop
+</code>
+
+h3. GET request with param
+
+<code>
+    val route = GET (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = ServerResponse("text/plain", "yo", 200)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+
+when you request <code>http://localhost:8080/test?param1=toto</code>, server return http code 200, with text/plain body containing "yo" response
+
+h3. GET request with default response
+
+h3. what to do when port chosen is in used
+
+h2. Uses in test context
