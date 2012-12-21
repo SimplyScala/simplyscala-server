@@ -82,8 +82,14 @@ class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) ex
 
     private def testRoute(request: Request, route: ServerRoute): Boolean = {
         request.getMethod.equalsIgnoreCase(route.restVerb.toString) &&
-        request.getPath.getPath == route.path &&
+        testPath(request, route) &&
         testParams(request, route.params)
+    }
+
+    private def testPath(request: Request, route: ServerRoute): Boolean = {
+        val routePath = route.path
+        if (routePath.startsWith("*") || routePath.endsWith("*") ) request.getPath.getPath contains routePath.replaceAll("\\*", "")
+        else request.getPath.getPath == route.path
     }
 
     private def testParams(request: Request, params: Map[String,String]): Boolean =

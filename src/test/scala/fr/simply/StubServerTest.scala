@@ -12,6 +12,28 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     after { if (server != null) server.stop }
 
+    test("[GET] test server default response") {
+        server = new StubServer(8080).start
+
+        RestAssured
+            .expect()
+            .statusCode(404)
+            .body(containsString("error"))
+            .when()
+            .get("http://localhost:8080/")
+    }
+
+    test("[GET] test user default response") {
+        server = new StubServer(8080).defaultResponse("text/plain", "default", 400).start
+
+        RestAssured
+            .expect()
+            .statusCode(400)
+            .body(containsString("default"))
+            .when()
+            .get("http://localhost:8080/")
+    }
+
     test("[GET] simple GET request with one param") {
         val route = GET (
             path = "/test",                 // pattern pour les paths
@@ -28,28 +50,21 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         assertTextPresent("yo")
     }
 
-    test("[GET] test user default response") {
-        server = new StubServer(8080).defaultResponse("text/plain", "default", 400).start
+    test("[GET] test pattern uses for path route") {
+        val route = GET (
+            path = "/test*",
+            response = ServerResponse("text/plain", "yo", 200)
+        )
+
+        server = new StubServer(8080, route).start
 
         RestAssured
             .expect()
-                .statusCode(400)
-                .body(containsString("default"))
+                .statusCode(200)
+                .body(containsString("yo"))
             .when()
-                .get("http://localhost:8080/")
+                .get("http://localhost:8080/testMe")
     }
-
-    test("[GET] test server default response") {
-        server = new StubServer(8080).start
-
-        RestAssured
-            .expect()
-                .statusCode(404)
-                .body(containsString("error"))
-            .when()
-                .get("http://localhost:8080/")
-    }
-
 
 
     // TODO pattern pour le path
