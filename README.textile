@@ -1,6 +1,6 @@
 h1. SimplyScala
 
-This project provide a fast & tiny http server ( [simpleframework](http://www.simpleframework.org/) )
+This project provide a fast & tiny http server (http://www.simpleframework.org/)
 with useful API to define server's routes (request-response), start & stop server.
 
 h2. RoadMap
