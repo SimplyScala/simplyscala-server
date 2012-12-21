@@ -14,6 +14,7 @@ h3. Basic Usage
 
 h3. GET request with param
 
+<pre>
 <code>
     val route = GET (
         path = "/test",
@@ -23,6 +24,7 @@ h3. GET request with param
 
     val server = new StubServer(8080, route).start
 </code>
+</pre>
 
 when you request <code>http://localhost:8080/test?param1=toto</code>, server return http code 200, with text/plain body containing "yo" response
 
