@@ -18,7 +18,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         RestAssured
             .expect()
                 .statusCode(404)
-                .body(containsString("error"))
+                .content(containsString("error"))
             .when()
                 .get("http://localhost:8080/")
     }
@@ -29,7 +29,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         RestAssured
             .expect()
                 .statusCode(400)
-                .body(containsString("default"))
+                .content(containsString("default"))
             .when()
                 .get("http://localhost:8080/")
     }
@@ -61,7 +61,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         RestAssured
             .expect()
                 .statusCode(200)
-                .body(containsString("yo"))
+                .content(containsString("yo"))
             .when()
                 .get("http://localhost:8080/testMe")
     }
