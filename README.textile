@@ -21,7 +21,7 @@ h3. GET request with custom default response
 You can defined your own server's default response like this :
 
 <code>
-    val server = new StubServer(8080).defaultResponse("text/plain", "default", 400).start
+    val server = new StubServer(8080).defaultResponse("text/plain", "value return in body", 400).start
 </code>
 
 h3. GET request with param
@@ -40,7 +40,7 @@ h3. GET request with param
 
 when you request <code>http://localhost:8080/test?param1=toto</code>, server return http code 200, with text/plain body containing "yo" response
 
-h3. What to do when port chosen is in used
+h3. What to do when port chosen is already used
 
 Before create the server's instance, SimplyScala check if the port you defined is not already in use.
 If it is the case, SimplyScala try the next value (+1) port to start the server.
