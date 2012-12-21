@@ -41,7 +41,7 @@ h3. Basic Usage
 
 By default, with no routes defined, SimplyScala server return a 404 text/plain reponse with "error" in body
 
-h3. GET request with custom default response
+h3. Server's custom default response
 
 You can defined your own server's default response like this :
 
