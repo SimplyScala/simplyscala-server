@@ -49,7 +49,7 @@ h3. SBT dependency
     "fr.simply" %% "simplyScala_2.9.2" % "0.1"
 </code></pre>
 
-h.4 Play! specific dependency management
+h4. Play! specific dependency management
 
 In your play! project Build file :
 
