@@ -46,7 +46,7 @@ h3. SBT dependency
 <pre><code>
     resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
 
-    "fr.simply" %% "simplyScala_2.9.2" % "0.1"
+    "fr.simply" % "simplyScala_2.9.2" % "0.1"
 </code></pre>
 
 h4. Play! specific dependency management
@@ -57,7 +57,7 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "fr.simply" %% "simplyScala_2.9.2" % "0.1"
+            "fr.simply" % "simplyScala_2.9.2" % "0.1"
         )
 
         val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
@@ -138,7 +138,7 @@ You can retrieve the effectiveness port in use like this :
 
 h2. Uses in test context
 
-h2. ttt
+h5. footpage
 
 This file is written with .textile extension
 * http://en.wikipedia.org/wiki/Textile_%28markup_language%29
