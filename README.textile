@@ -68,6 +68,8 @@ In your play! project Build file :
 
 h3. Simple JAR file
 
+    https://github.com/ubourdon/dependenciesRepository/raw/master/release/fr/simply/simplyScala_2.9.2/0.1/simplyScala_2.9.2-0.1.jar
+
 h2. Usage
 
 to use SimplyScala API import
