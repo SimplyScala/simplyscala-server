@@ -22,11 +22,30 @@ It use 0.12 sbt version
 
 h3. Maven dependency
 
-coming soon !
+<pre><code>
+    <repositories>
+        <repository>
+    	    <id>ugo-repo</id>
+    	    <url>https://github.com/ubourdon/dependenciesRepository/raw/master/release</url>
+    	</repository>
+    </repositories>
+
+    <dependency>
+        <groupId>fr.simply</groupId>
+        <artifactId>simplyScala</artifactId>
+        <version>0.1</version>
+    </dependency>
+</code></pre>
 
 h3. SBT dependency
 
-coming soon !
+<pre><code>
+    resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
+
+    "fr.simply" %% "simplyScala" % "0.1"
+</code></pre>
+
+h3. Simple JAR file
 
 h2. Usage
 
@@ -39,7 +58,7 @@ h3. Basic Usage
 </code>
 </pre>
 
-By default, with no routes defined, SimplyScala server return a 404 text/plain reponse with "error" in body
+By default, with no routes defined, SimplyScala server return a 404 text/plain response with "error" in body
 
 h3. Server's custom default response
 
@@ -49,7 +68,7 @@ You can defined your own server's default response like this :
     val server = new StubServer(8080).defaultResponse("text/plain", "value return in body", 400).start
 </code>
 
-h3. GET request with param
+h3. Build GET request route with param
 
 <pre>
 <code>
@@ -64,6 +83,20 @@ h3. GET request with param
 </pre>
 
 when you request <code>http://localhost:8080/test?param1=toto</code>, server return http code 200, with text/plain body containing "yo" response
+
+h3. Build POST request route with param
+
+<pre>
+<code>
+    val route = POST (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = ServerResponse("text/plain", "yo", 200)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+</pre>
 
 h3. What to do when port chosen is already used
 
