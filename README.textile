@@ -32,7 +32,7 @@ h3. Maven dependency
 
     <dependency>
         <groupId>fr.simply</groupId>
-        <artifactId>simplyScala</artifactId>
+        <artifactId>simplyScala_2.9.2</artifactId>
         <version>0.1</version>
     </dependency>
 </code></pre>
@@ -42,7 +42,7 @@ h3. SBT dependency
 <pre><code>
     resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
 
-    "fr.simply" %% "simplyScala" % "0.1"
+    "fr.simply" %% "simplyScala_2.9.2" % "0.1"
 </code></pre>
 
 h3. Simple JAR file
