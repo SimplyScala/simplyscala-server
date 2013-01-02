@@ -45,6 +45,23 @@ h3. SBT dependency
     "fr.simply" %% "simplyScala_2.9.2" % "0.1"
 </code></pre>
 
+h.4 Play! specific dependency management
+
+In your play! project Build file :
+
+<pre><code>
+    object ApplicationBuild extends Build {
+
+        val appDependencies = Seq (
+            "fr.simply" %% "simplyScala_2.9.2" % "0.1"
+        )
+
+        val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
+            resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
+        )
+    }
+</code></pre>
+
 h3. Simple JAR file
 
 h2. Usage
