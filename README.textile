@@ -7,14 +7,14 @@ This API works on java 6 + environment
 
 h2. RoadMap
 
-* custom server's default response                  OK
-* GET request with params                           OK
-* use * pattern for path route param                OK
-* check if chosen port was not already used         OK
-* POST request                                      OK
-* PUT  request                                      TODO
-* HEAD request                                      TODO
-* cross compilation                                 TODO
+* %{color:green;padding-right:164px}custom server's default response%                  %{color:green;font-weight:bold}OK%
+* %{color:green;padding-right:225px}GET request with params%                           %{color:green;font-weight:bold}OK%
+* %{color:green;padding-right:155px}use * pattern for path route param%                %{color:green;font-weight:bold}OK%
+* %{color:green;padding-right:100px}check if chosen port was not already used%         %{color:green;font-weight:bold}OK%
+* %{color:green;padding-right:312px}POST request%                                      %{color:green;font-weight:bold}OK%
+* %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
+* %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
+* %{color:orange;padding-right:285px}cross compilation%                                %{color:orange;font-weight:bold}TODO%
 
 
 h2. Installation
@@ -137,3 +137,10 @@ You can retrieve the effectiveness port in use like this :
 </pre>
 
 h2. Uses in test context
+
+h2. ttt
+
+This file is written with .textile extension
+* http://en.wikipedia.org/wiki/Textile_%28markup_language%29
+* http://textile.sitemonks.com
+* http://redcloth.org/hobix.com/textile/
