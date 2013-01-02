@@ -9,7 +9,7 @@ h2. RoadMap
 * GET request with params                           OK
 * use * pattern for path route param                OK
 * check if chosen port was not already used         OK
-* POST request                                      TODO
+* POST request                                      OK
 * PUT  request                                      TODO
 * HEAD request                                      TODO
 
