@@ -5,6 +5,7 @@ import org.scalatest.matchers.ShouldMatchers
 import net.sourceforge.jwebunit.junit.JWebUnit._
 import com.jayway.restassured.RestAssured
 import org.hamcrest.Matchers._
+import java.util
 
 class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
@@ -12,7 +13,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     after { if (server != null) server.stop }
 
-    test("[GET] test server default response") {
+    test("test server default response") {
         server = new StubServer(8080).start
 
         RestAssured
@@ -23,7 +24,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
                 .get("http://localhost:8080/")
     }
 
-    test("[GET] test user default response") {
+    test("test user default response") {
         server = new StubServer(8080).defaultResponse("text/plain", "default", 400).start
 
         RestAssured
@@ -73,5 +74,24 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         val otherServer = new StubServer(8080).start
         otherServer.portInUse should be (8081)
         otherServer.stop
+    }
+
+    test("[POST] simple post request with 1 param") {
+        val route = POST (
+            path = "/test",
+            params = Map("param1" -> "toto"),
+            response = ServerResponse("text/plain", "yo", 200)
+        )
+
+        server = new StubServer(8080, route).start
+
+        RestAssured
+            .given()
+                .parameters("param1", "toto")
+            .expect()
+                .statusCode(200)
+                .content(containsString("yo"))
+            .when()
+                .post("http://localhost:8080/test")
     }
 }

@@ -12,6 +12,11 @@ object GET {
         ServerRoute(get, path, response, params)
 }
 
+object POST {
+    def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
+        ServerRoute(post, path, response, params)
+}
+
 class StubServer(port: Int, routes: ServerRoute*) {
     private var defaultResponse = ServerResponse("text/plain", "error", 404)
     private var simplyServer: SocketConnection = _
