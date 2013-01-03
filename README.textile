@@ -12,9 +12,9 @@ h2. RoadMap
 * %{color:green;padding-right:155px}use * pattern for path route param%                %{color:green;font-weight:bold}OK%
 * %{color:green;padding-right:100px}check if chosen port was not already used%         %{color:green;font-weight:bold}OK%
 * %{color:green;padding-right:312px}POST request%                                      %{color:green;font-weight:bold}OK%
+* %{color:green;padding-right:285px}cross compilation%                                 %{color:green;font-weight:bold}OK%
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
-* %{color:orange;padding-right:285px}cross compilation%                                %{color:orange;font-weight:bold}TODO%
 
 
 h2. Installation
@@ -46,8 +46,10 @@ h3. SBT dependency
 <pre><code>
     resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
 
-    "fr.simply" % "simplyScala_2.9.2" % "0.1"
+    "fr.simply" %% "simplyScala" % "0.1"
 </code></pre>
+
+    Seules les versions 2.9.0, 2.9.1 & 2.9.2 sont construites
 
 h4. Play! specific dependency management
 
