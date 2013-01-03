@@ -1,15 +1,18 @@
 import sbt._
-import Keys._
+import sbt.Keys._
 
 object SimplyScalaBuild extends Build {
-    name := "simplyScala"
-
-    version := "0.1"
-
-    scalaVersion := "2.9.2"
 
     lazy val root = Project(id = "simplyScala", base = file("."),
         settings = Project.defaultSettings ++ Seq(
+            name := "simplyScala",
+
+            version := "0.1",
+
+            scalaVersion := "2.9.2",
+
+            crossScalaVersions := Seq("2.9.0", "2.9.1", "2.9.2"),
+
             libraryDependencies ++= Seq(
                 "org.simpleframework" % "simple" % "4.1.21",
 
