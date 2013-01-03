@@ -47,7 +47,7 @@ h3. SBT dependency
 <pre><code>
     resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
 
-    "fr.simply" %% "simplyScala" % "0.1"
+    libraryDependencies += "fr.simply" %% "simplyScala" % "0.1"
 </code></pre>
 
     Seules les versions 2.9.0, 2.9.1 & 2.9.2 sont construites
