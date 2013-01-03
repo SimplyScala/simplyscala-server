@@ -15,6 +15,7 @@ h2. RoadMap
 * %{color:green;padding-right:285px}cross compilation%                                 %{color:green;font-weight:bold}OK%
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
+* %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
 
 
 h2. Installation
