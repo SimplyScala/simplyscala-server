@@ -4,39 +4,6 @@ import org.simpleframework.http.core.Container
 import org.simpleframework.http.Response
 import org.simpleframework.http.Request
 
-object SimplyScala extends App {
-    //val connection = startServer(8080)
-
-    // server(8080) et passer aussi les routes
-    /**
-     * routes :
-     *  val route = GET {
-     *          path = /rest/url            // si rien alors n'importe quel path
-     *          param1 = value1
-     *          param2 = value2
-     *          response {                            // mandatory ??
-     *              contentType = text/plain
-     *              body = "Hello World !"
-     *          }
-     *      }
-     *
-     *      POST {
-     *
-     *      }
-     */
-
-    val route = GET (
-            path = "/test",                 // pattern pour les paths
-            response = ServerResponse("text/plain", "yo ça marche !!", 200),
-            params = Map("param1" -> "toto", "param2" -> "tata")
-    )
-
-    new StubServer(8080/*, route*/).start		// il faut pouvoir requeter une plage de port dispo si un ne passe pas et que l'utilisateur puisse le réccup pour la conf de son code de prod
-    // val stubServer = stubServer(8080, route).defaultResponse(contentType, body).start
-    // stubServer.stop
-    // stubServer.addRoute(route).dropRoute(route)   //restart ??? avant start ???
-}
-
 class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) extends Container {
 
     def handle(request: Request, response: Response) {
