@@ -9,12 +9,12 @@ case class ServerResponse(contentType: String, body: String, code: Int)
 
 object GET {
     def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
-        ServerRoute(get, path, response, params)
+        ServerRoute(Get, path, response, params)
 }
 
 object POST {
     def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
-        ServerRoute(post, path, response, params)
+        ServerRoute(Post, path, response, params)
 }
 
 class StubServer(port: Int, routes: ServerRoute*) {
