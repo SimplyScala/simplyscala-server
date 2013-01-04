@@ -50,7 +50,7 @@ h3. SBT dependency
     libraryDependencies += "simplyscala" %% "simplyscala-server" % "0.1"
 </code></pre>
 
-    Seules les versions 2.9.0, 2.9.1 & 2.9.2 sont construites
+    Only the following Scala versions 2.9.0, 2.9.1 & 2.9.2 are currently supported.
 
 h4. Play! specific dependency management
 
@@ -98,7 +98,7 @@ You can define your own server's default response like this :
     val server = new StubServer(8080).defaultResponse("text/plain", "value return in body", 400).start
 </code>
 
-h3. Build GET request route with param
+h3. Build GET request routes with param
 
 <pre>
 <code>
