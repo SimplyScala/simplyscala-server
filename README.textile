@@ -71,7 +71,7 @@ In your play! project Build file :
 
 h3. Simple JAR file
 
-    https://github.com/SimplyScala/repository/raw/master/release/fr/simply/simplyScala_2.9.2/0.1/simplyScala_2.9.2-0.1.jar
+    https://github.com/SimplyScala/repository/raw/master/release/simplyscala/simplyScala_2.9.2/0.1/simplyScala_2.9.2-0.1.jar
 
 h2. Usage
 
