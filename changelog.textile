@@ -1,0 +1,11 @@
+h2. Version 0.1
+
+    * deliver      : january 2nd 2013
+    * developer(s) : bourdon.ugo@gmail.com
+    * features     :
+        ** custom server's default response
+        ** GET request with params
+        ** use * pattern for path route param
+        ** check if chosen port was not already used
+        ** POST request
+        ** cross compilation
