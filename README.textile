@@ -30,14 +30,14 @@ h3. Maven dependency
 <pre><code>
     <repositories>
         <repository>
-    	    <id>ugo-repo</id>
-    	    <url>https://github.com/ubourdon/dependenciesRepository/raw/master/release</url>
+    	    <id>SimplyScala-repo</id>
+    	    <url>https://github.com/SimplyScala/repository/raw/master/release</url>
     	</repository>
     </repositories>
 
     <dependency>
-        <groupId>fr.simply</groupId>
-        <artifactId>simplyScala_2.9.2</artifactId>
+        <groupId>simplyscala</groupId>
+        <artifactId>simplyscala-server_2.9.2</artifactId>
         <version>0.1</version>
     </dependency>
 </code></pre>
@@ -45,9 +45,9 @@ h3. Maven dependency
 h3. SBT dependency
 
 <pre><code>
-    resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
+    resolvers += "SimplyScala repository" at "https://github.com/SimplyScala/repository/raw/master/release"
 
-    libraryDependencies += "fr.simply" %% "simplyScala" % "0.1"
+    libraryDependencies += "simplyscala" %% "simplyscala-server" % "0.1"
 </code></pre>
 
     Seules les versions 2.9.0, 2.9.1 & 2.9.2 sont construites
@@ -60,18 +60,18 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "fr.simply" % "simplyScala_2.9.2" % "0.1"
+            "simplyscala" %% "simplyscala-server" % "0.1"
         )
 
         val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-            resolvers += "ugo repository" at "https://github.com/ubourdon/dependenciesRepository/raw/master/release"
+            resolvers += "SimplyScala repository" at "https://github.com/SimplyScala/repository/raw/master/release"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-    https://github.com/ubourdon/dependenciesRepository/raw/master/release/fr/simply/simplyScala_2.9.2/0.1/simplyScala_2.9.2-0.1.jar
+    https://github.com/SimplyScala/repository/raw/master/release/fr/simply/simplyScala_2.9.2/0.1/simplyScala_2.9.2-0.1.jar
 
 h2. Usage
 
