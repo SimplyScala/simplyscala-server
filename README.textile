@@ -1,4 +1,4 @@
-h1. SimplyScala
+h1. SIMPLY SCALA SERVER
 
 This project provides a fast & ultra-lightweight http server (http://www.simpleframework.org/)
 with an API dedicated to define server's routes (request-response), start & stop server.
@@ -22,7 +22,7 @@ h2. Installation
 
 h3. Git repo
 
-SimplyScala is a SBT project.
+simplyscala-server is a SBT project.
 It use 0.12 sbt version.
 
 h3. Maven dependency
@@ -75,7 +75,7 @@ h3. Simple JAR file
 
 h2. Usage
 
-In order to use SimplyScala API, import as follows:
+In order to use SimplyScala server API, import as follows:
 
 <code>import fr.simply._</code>
 
