@@ -1,13 +1,15 @@
 import sbt._
 import sbt.Keys._
 
-object SimplyScalaBuild extends Build {
+object SimplyScalaServerBuild extends Build {
 
-    lazy val root = Project(id = "simplyScala", base = file("."),
+    // make library => 'sbt + package' & 'sbt + make-pom'
+
+    lazy val root = Project(id = "simplyscala-server", base = file("."),
         settings = Project.defaultSettings ++ Seq(
-            name := "simplyScala",
+            name := "simplyscala-server",
 
-            version := "0.2-SNAPSHOT",
+            version := "0.1",
 
             scalaVersion := "2.9.2",
 
