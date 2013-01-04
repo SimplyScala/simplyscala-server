@@ -9,7 +9,7 @@ object SimplyScalaServerBuild extends Build {
         settings = Project.defaultSettings ++ Seq(
             name := "simplyscala-server",
 
-            version := "0.1",
+            version := "0.2-SNAPSHOT",
 
             scalaVersion := "2.9.2",
 
