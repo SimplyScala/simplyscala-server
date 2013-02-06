@@ -13,11 +13,11 @@ h2. Roadmap
 * %{color:green;padding-right:100px}check if chosen port was not already used%         %{color:green;font-weight:bold}OK%
 * %{color:green;padding-right:312px}POST request%                                      %{color:green;font-weight:bold}OK%
 * %{color:green;padding-right:285px}cross compilation%                                 %{color:green;font-weight:bold}OK%
+* push on maven central repository                                                     OK
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
-
-
+* compile in scala 2.10                                                                TODO
 h2. Installation
 
 h3. Git repo
@@ -28,26 +28,17 @@ It use 0.12 sbt version.
 h3. Maven dependency
 
 <pre><code>
-    <repositories>
-        <repository>
-    	    <id>SimplyScala-repo</id>
-    	    <url>https://github.com/SimplyScala/repository/raw/master/release</url>
-    	</repository>
-    </repositories>
-
     <dependency>
-        <groupId>simplyscala</groupId>
+        <groupId>com.github.simplyscala</groupId>
         <artifactId>simplyscala-server_2.9.2</artifactId>
-        <version>0.1</version>
+        <version>0.2</version>
     </dependency>
 </code></pre>
 
 h3. SBT dependency
 
 <pre><code>
-    resolvers += "SimplyScala repository" at "https://github.com/SimplyScala/repository/raw/master/release"
-
-    libraryDependencies += "simplyscala" %% "simplyscala-server" % "0.1"
+    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.2"
 </code></pre>
 
     Only the following Scala versions 2.9.0, 2.9.1 & 2.9.2 are currently supported.
@@ -60,18 +51,14 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "simplyscala" %% "simplyscala-server" % "0.1"
-        )
-
-        val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-            resolvers += "SimplyScala repository" at "https://github.com/SimplyScala/repository/raw/master/release"
+            "com.github.simplyscala" %% "simplyscala-server" % "0.2"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-    https://github.com/SimplyScala/repository/raw/master/release/simplyscala/simplyscala-server_2.9.2/0.1/simplyscala-server_2.9.2-0.1.jar
+
 
 h2. Usage
 
@@ -149,3 +136,6 @@ This file is written with .textile extension
 * http://en.wikipedia.org/wiki/Textile_%28markup_language%29
 * http://textile.sitemonks.com
 * http://redcloth.org/hobix.com/textile/
+
+"Maven Repository Usage Guide":https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide
+"Sonatype project JIRA Page":https://issues.sonatype.org/browse/OSSRH-5163
