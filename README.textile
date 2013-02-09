@@ -14,11 +14,12 @@ h2. Roadmap
 * %{color:green;padding-right:312px}POST request%                                      %{color:green;font-weight:bold}OK%
 * %{color:green;padding-right:285px}cross compilation%                                 %{color:green;font-weight:bold}OK%
 * push on maven central repository                                                     OK
+
+* Dynamic ServerResponse                                                               TODO
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
 * build in scala 2.10                                                                  TODO
-* inject fonction like Request => ServerResponse                                       TODO
 
 h2. Installation
 
