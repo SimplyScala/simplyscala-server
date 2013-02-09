@@ -22,8 +22,6 @@ object SimplyScalaServerBuild extends Build {
                 "org.simpleframework" % "simple" % "4.1.21",
 
                 "org.scalatest" %% "scalatest" % "1.8" % "test",
-                "net.sourceforge.jwebunit" % "jwebunit-core" % "3.1" % "test",
-                "net.sourceforge.jwebunit" % "jwebunit-htmlunit-plugin" % "3.1" % "test",
                 "com.jayway.restassured" % "rest-assured" % "1.7.2" % "test"
             ),
 
