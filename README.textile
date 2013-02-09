@@ -5,6 +5,8 @@ with an API dedicated to define server's routes (request-response), start & stop
 
 This works in a Java 6+ environment
 
+The actual project release version is "0.2":http://search.maven.org/#search|ga|1|simplyscala-server
+
 h2. Roadmap
 
 * %{color:green;padding-right:164px}custom server's default response%                  %{color:green;font-weight:bold}OK%
@@ -61,7 +63,7 @@ In your play! project Build file :
 
 h3. Simple JAR file
 
-http://search.maven.org/remotecontent?filepath=com/github/simplyscala/simplyscala-server_2.9.2/0.2/simplyscala-server_2.9.2-0.2.jar
+"0.2 jar version":http://search.maven.org/remotecontent?filepath=com/github/simplyscala/simplyscala-server_2.9.2/0.2/simplyscala-server_2.9.2-0.2.jar
 
 h2. Usage
 
@@ -85,7 +87,7 @@ h3. Server's custom default response
 You can define your own server's default response like this :
 
 <code>
-    val server = new StubServer(8080).defaultResponse("text/plain", "value return in body", 400).start
+    val server = new StubServer(8080).defaultResponse(ContentType("text/plain"), "value return in body", 400).start
 </code>
 
 h3. Build GET request routes with param
@@ -95,7 +97,7 @@ h3. Build GET request routes with param
     val route = GET (
         path = "/test",
         params = Map("param1" -> "toto"),
-        response = ServerResponse("text/plain", "yo", 200)
+        response = ServerResponse(ContentType("text/plain"), "yo", 200)
     )
 
     val server = new StubServer(8080, route).start
@@ -111,14 +113,14 @@ h3. Build POST request route with param
     val route = POST (
         path = "/test",
         params = Map("param1" -> "toto"),
-        response = ServerResponse("text/plain", "yo", 200)
+        response = ServerResponse(ContentType("text/plain"), "yo", 200)
     )
 
     val server = new StubServer(8080, route).start
 </code>
 </pre>
 
-h3. What to do when the configured port is already used
+h3. What to do when the configured port is already used ?
 
 Before creating the server instance, SimplyScala checks if the port you defined is not already in use.
 If it is the case, SimplyScala will try the next value (+1) port to start the server.
@@ -131,7 +133,45 @@ You can retrieve the effective port like this:
 </code>
 </pre>
 
+h3. ContentType util
+
+with fr.simplyscala.util._ import you can use some utilities to declare server's content type
+
+<pre>
+<code>
+    val route = GET (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = ServerResponse(Text_Plain), "yo", 200)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+</pre>
+
+if we don't have the needed content type util you can use <code>ContentType("your content type")</code>
+
 h2. Uses in test context
+
+simplyscala-server is particularly useful in unit test context.
+You can use i like that with "ScalaTest":http://www.scalatest.org/ :
+
+<pre>
+<code>
+    class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
+
+        var server: StubServer = _
+
+        after { if (server != null) server.stop }
+
+        test("test server default response") {
+            server = new StubServer(8080).start
+
+            // do some test with server
+        }
+    }
+</code>
+</pre>
 
 h5. footpage
 
