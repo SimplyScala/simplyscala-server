@@ -1,0 +1,353 @@
+<table class="classes"><tbody><tr>
+      <td class="barContainerLeft"><a href="#">&#x200B;fr/&#x200B;simply/<span class="header">&#x200B;SimplyScala.scala</span></a></td>
+      <td class="barContainerRight"><div class="percentages">
+      <div class="bar">
+        <div class="percentage">94 %</div>
+        <div class="greenBar" style="width:188px;">&nbsp;</div>
+      </div>
+    </div></td>
+    </tr><tr>
+      <td class="barContainerLeft"><a href="src-src_main_scala_fr_simply_SimplyScala.scala.html#Class_fr_simply_SimplyScala"><img src="class.png"></img>SimplyScala</a></td>
+      <td class="barContainerRight"><div class="percentages">
+      <div class="bar">
+        <div class="percentage">94 %</div>
+        <div class="greenBar" style="width:188px;">&nbsp;</div>
+      </div>
+    </div></td>
+    </tr></tbody></table><table class="source"><tbody><tr>
+            <td class="black">1</td>
+            <td>package fr.simply
+</td>
+          </tr><tr>
+            <td class="black">2</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">3</td>
+            <td>import org.simpleframework.http.core.Container
+</td>
+          </tr><tr>
+            <td class="black">4</td>
+            <td>import org.simpleframework.http.Response
+</td>
+          </tr><tr>
+            <td class="black">5</td>
+            <td>import org.simpleframework.http.Request
+</td>
+          </tr><tr>
+            <td class="black">6</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="green">7</td>
+            <td><a id="Class_fr_simply_SimplyScala"></a>class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRoute]) extends Container {
+</td>
+          </tr><tr>
+            <td class="black">8</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">9</td>
+            <td>    def handle(request: Request, response: Response) {
+</td>
+          </tr><tr>
+            <td class="green">10</td>
+            <td>        val time = System.currentTimeMillis
+</td>
+          </tr><tr>
+            <td class="black">11</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="green">12</td>
+            <td>        response.set(&quot;Server&quot;, &quot;SimplyScala/1.0 (Simple 4.0)&quot;)
+</td>
+          </tr><tr>
+            <td class="green">13</td>
+            <td>        response.setDate(&quot;Date&quot;, time)
+</td>
+          </tr><tr>
+            <td class="green">14</td>
+            <td>        response.setDate(&quot;Last-Modified&quot;, time)
+</td>
+          </tr><tr>
+            <td class="black">15</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="green">16</td>
+            <td>        if(requestMatchWithRoute(request, response, routes)) println(&quot;one route match with request&quot;)
+</td>
+          </tr><tr>
+            <td class="green">17</td>
+            <td>        else defaultReponse(response, request)
+</td>
+          </tr><tr>
+            <td class="black">18</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="green">19</td>
+            <td>        response.getPrintStream.close
+</td>
+          </tr><tr>
+            <td class="green">20</td>
+            <td>        response.close()
+</td>
+          </tr><tr>
+            <td class="black">21</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">22</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">23</td>
+            <td>    private def requestMatchWithRoute(request: Request, response: Response, routes: List[ServerRoute]): Boolean = {
+</td>
+          </tr><tr>
+            <td class="green">24</td>
+            <td>        routes.exists {
+</td>
+          </tr><tr>
+            <td class="black">25</td>
+            <td>            route =&gt;
+</td>
+          </tr><tr>
+            <td class="green">26</td>
+            <td>                route.response match {
+</td>
+          </tr><tr>
+            <td class="green">27</td>
+            <td>                    case staticResponse: StaticServerResponse =&gt; makeStaticResponse(request, response, route)
+</td>
+          </tr><tr>
+            <td class="green">28</td>
+            <td>                    case dynamicResponse: DynamicServerResponse =&gt; makeDynamicResponse(request, response, route)
+</td>
+          </tr><tr>
+            <td class="black">29</td>
+            <td>                }
+</td>
+          </tr><tr>
+            <td class="black">30</td>
+            <td>        }
+</td>
+          </tr><tr>
+            <td class="black">31</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">32</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">33</td>
+            <td>    private def defaultReponse(response: Response, request: Request) {
+</td>
+          </tr><tr>
+            <td class="green">34</td>
+            <td>        println(&quot;defaultResponse&quot;)
+</td>
+          </tr><tr>
+            <td class="green">35</td>
+            <td>        response.set(&quot;Content-Type&quot;, defaultResponse.contentType.toString)
+</td>
+          </tr><tr>
+            <td class="green">36</td>
+            <td>        response.setCode(defaultResponse.code)
+</td>
+          </tr><tr>
+            <td class="green">37</td>
+            <td>        response.getPrintStream.println(defaultResponse.body)
+</td>
+          </tr><tr>
+            <td class="black">38</td>
+            <td>        /*response.getPrintStream.println(&quot;names : &quot; + request.getNames)
+</td>
+          </tr><tr>
+            <td class="black">39</td>
+            <td>        response.getPrintStream.println(&quot;attributes : &quot; + request.getAttributes)
+</td>
+          </tr><tr>
+            <td class="black">40</td>
+            <td>        response.getPrintStream.println(&quot;parameters : &quot; + request.getParameter(&quot;param1&quot;))
+</td>
+          </tr><tr>
+            <td class="black">41</td>
+            <td>        response.getPrintStream.println(&quot;request path : &quot; + request.getPath.getPath)
+</td>
+          </tr><tr>
+            <td class="black">42</td>
+            <td>        response.getPrintStream.println(&quot;request verb : &quot; + request.getMethod + &quot;\n&quot;)*/
+</td>
+          </tr><tr>
+            <td class="black">43</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">44</td>
+            <td>        /*response.getPrintStream.println(&quot;verb : &quot; + routes.head.restVerb)
+</td>
+          </tr><tr>
+            <td class="black">45</td>
+            <td>        response.getPrintStream.println(&quot;path : &quot; + routes.head.path)*/
+</td>
+          </tr><tr>
+            <td class="black">46</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">47</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">48</td>
+            <td>    private def makeStaticResponse(request: Request, response: Response, route: ServerRoute): Boolean = {
+</td>
+          </tr><tr>
+            <td class="green">49</td>
+            <td>        if(testRoute(request, route)) {
+</td>
+          </tr><tr>
+            <td class="green">50</td>
+            <td>            val staticResponse = route.response.asInstanceOf[StaticServerResponse]
+</td>
+          </tr><tr>
+            <td class="green">51</td>
+            <td>            makeResponse(response, staticResponse)
+</td>
+          </tr><tr>
+            <td class="green">52</td>
+            <td>            true
+</td>
+          </tr><tr>
+            <td class="red">53</td>
+            <td>        } else <span class="non">false
+</span></td>
+          </tr><tr>
+            <td class="black">54</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">55</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">56</td>
+            <td>    private def makeDynamicResponse(request: Request, response: Response, route: ServerRoute): Boolean = {
+</td>
+          </tr><tr>
+            <td class="green">57</td>
+            <td>        if(testRoute(request, route)) {
+</td>
+          </tr><tr>
+            <td class="green">58</td>
+            <td>            val dynamicResponse = route.response.asInstanceOf[DynamicServerResponse].response(request)
+</td>
+          </tr><tr>
+            <td class="green">59</td>
+            <td>            makeResponse(response, dynamicResponse)
+</td>
+          </tr><tr>
+            <td class="green">60</td>
+            <td>            true
+</td>
+          </tr><tr>
+            <td class="red">61</td>
+            <td>        } else <span class="non">false
+</span></td>
+          </tr><tr>
+            <td class="black">62</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">63</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">64</td>
+            <td>    private def testRoute(request: Request, route: ServerRoute): Boolean = {
+</td>
+          </tr><tr>
+            <td class="green">65</td>
+            <td>        request.getMethod.equalsIgnoreCase(route.restVerb.toString) &amp;&amp;
+</td>
+          </tr><tr>
+            <td class="black">66</td>
+            <td>        testPath(request, route) &amp;&amp;
+</td>
+          </tr><tr>
+            <td class="black">67</td>
+            <td>        testParams(request, route.params)
+</td>
+          </tr><tr>
+            <td class="black">68</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">69</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">70</td>
+            <td>    private def makeResponse(response: Response, dynamicResponse: StaticServerResponse) {
+</td>
+          </tr><tr>
+            <td class="green">71</td>
+            <td>        response.set(&quot;Content-Type&quot;, dynamicResponse.contentType.toString)
+</td>
+          </tr><tr>
+            <td class="green">72</td>
+            <td>        response.setCode(dynamicResponse.code)
+</td>
+          </tr><tr>
+            <td class="green">73</td>
+            <td>        response.getPrintStream.println(dynamicResponse.body)
+</td>
+          </tr><tr>
+            <td class="black">74</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">75</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">76</td>
+            <td>    private def testPath(request: Request, route: ServerRoute): Boolean = {
+</td>
+          </tr><tr>
+            <td class="green">77</td>
+            <td>        val routePath = route.path
+</td>
+          </tr><tr>
+            <td class="green">78</td>
+            <td>        if (routePath.startsWith(&quot;*&quot;) || routePath.endsWith(&quot;*&quot;) ) request.getPath.getPath contains routePath.replaceAll(&quot;\\*&quot;, &quot;&quot;)
+</td>
+          </tr><tr>
+            <td class="green">79</td>
+            <td>        else request.getPath.getPath == route.path
+</td>
+          </tr><tr>
+            <td class="black">80</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">81</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">82</td>
+            <td>    private def testParams(request: Request, params: Map[String,String]): Boolean =
+</td>
+          </tr><tr>
+            <td class="green">83</td>
+            <td>        params.forall { case (key,value) =&gt; request.getParameter(key) != null &amp;&amp; request.getParameter(key) == value }
+</td>
+          </tr><tr>
+            <td class="black">84</td>
+            <td>}
+</td>
+          </tr></tbody></table>
