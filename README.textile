@@ -154,7 +154,7 @@ if we don't have the needed content type util you can use <code>ContentType("you
 h2. Uses in test context
 
 simplyscala-server is particularly useful in unit test context.
-You can use i like that with "ScalaTest":http://www.scalatest.org/ :
+You can use it like that with "ScalaTest":http://www.scalatest.org/ :
 
 <pre>
 <code>
@@ -164,7 +164,7 @@ You can use i like that with "ScalaTest":http://www.scalatest.org/ :
 
         after { if (server != null) server.stop }
 
-        test("a test which need simplyscala-server") {
+        test("a test which needed simplyscala-server") {
             val route = GET (
                 path = "/test",
                 params = Map("param" -> "toto"),

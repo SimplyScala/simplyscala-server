@@ -9,3 +9,16 @@ h2. Version 0.1
         ** check if chosen port was not already used
         ** POST request
         ** cross compilation
+
+h2. Version 0.2
+    * delivery date : february 7th 2013
+    * developer(s)  : bourdon.ugo@gmail.com
+    * features      :
+        ** deploy on maven central repository com.github.simplyscala %% simplyscala-server
+
+h2. Version 0.3 (in development)
+    * delivery date : soon
+    * developer(s)  : bourdon.ugo@gmail.com
+    * features      :
+        ** content type util
+        ** dynamic server response
