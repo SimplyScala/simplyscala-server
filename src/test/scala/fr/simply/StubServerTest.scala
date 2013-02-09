@@ -2,7 +2,6 @@ package fr.simply
 
 import org.scalatest.{BeforeAndAfter, FunSuite}
 import org.scalatest.matchers.ShouldMatchers
-import net.sourceforge.jwebunit.junit.JWebUnit._
 import com.jayway.restassured.RestAssured
 import org.hamcrest.Matchers._
 import util.{ContentType, Text_Plain}
@@ -45,11 +44,12 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
         server = new StubServer(8080, route).start
 
-        setBaseUrl("http://localhost:8080")
-        beginAt("test?param1=toto")
-
-        assertResponseCode(200)
-        assertTextPresent("yo")
+        RestAssured
+            .expect()
+                .statusCode(200)
+                .content(containsString("yo"))
+            .when()
+                .get("http://localhost:8080/test?param1=toto")
     }
 
     test("[GET] test pattern uses for path route") {
