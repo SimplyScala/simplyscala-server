@@ -25,7 +25,7 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
             route =>
                 route.response match {
                     case staticResponse: StaticServerResponse => makeStaticResponse(request, response, route)
-                    case _ => println("error for now !!!"); false
+                    case dynamicResponse: DynamicServerResponse => makeDynamicResponse(request, response, route)
                 }
         }
     }
@@ -48,9 +48,15 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
     private def makeStaticResponse(request: Request, response: Response, route: ServerRoute): Boolean = {
         if(testRoute(request, route)) {
             val staticResponse = route.response.asInstanceOf[StaticServerResponse]
-            response.set("Content-Type", staticResponse.contentType.toString)
-            response.setCode(staticResponse.code)
-            response.getPrintStream.println(staticResponse.body)
+            makeResponse(response, staticResponse)
+            true
+        } else false
+    }
+
+    private def makeDynamicResponse(request: Request, response: Response, route: ServerRoute): Boolean = {
+        if(testRoute(request, route)) {
+            val dynamicResponse = route.response.asInstanceOf[DynamicServerResponse].response(request)
+            makeResponse(response, dynamicResponse)
             true
         } else false
     }
@@ -59,6 +65,12 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
         request.getMethod.equalsIgnoreCase(route.restVerb.toString) &&
         testPath(request, route) &&
         testParams(request, route.params)
+    }
+
+    private def makeResponse(response: Response, dynamicResponse: StaticServerResponse) {
+        response.set("Content-Type", dynamicResponse.contentType.toString)
+        response.setCode(dynamicResponse.code)
+        response.getPrintStream.println(dynamicResponse.body)
     }
 
     private def testPath(request: Request, route: ServerRoute): Boolean = {

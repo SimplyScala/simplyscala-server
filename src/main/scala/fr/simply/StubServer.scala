@@ -3,14 +3,16 @@ package fr.simply
 import org.simpleframework.transport.connect.SocketConnection
 import java.net.{BindException, InetSocketAddress, SocketAddress}
 import util.{Text_Plain, ContentType}
+import org.simpleframework.http.Request
 
 case class ServerRoute(restVerb: RestVerb,
-                       path: String, response: ServerResponse,
+                       path: String,
+                       response: ServerResponse,
                        params: Map[String, String] = Map())
 
 trait ServerResponse
 case class StaticServerResponse(contentType: ContentType, body: String, code: Int) extends ServerResponse
-//case class DynamicServerResponse(response: Request => ServerResponse) extends ServerResponse
+case class DynamicServerResponse(response: Request => StaticServerResponse) extends ServerResponse
 
 object GET {
     def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =

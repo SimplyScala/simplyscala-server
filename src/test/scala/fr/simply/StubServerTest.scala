@@ -6,6 +6,7 @@ import net.sourceforge.jwebunit.junit.JWebUnit._
 import com.jayway.restassured.RestAssured
 import org.hamcrest.Matchers._
 import util.{ContentType, Text_Plain}
+import org.simpleframework.http.Request
 
 class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
@@ -97,5 +98,27 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     test("content type builder") {
         StaticServerResponse(ContentType("text/plain"), "yo", 200).contentType.toString should be ("text/plain")
+    }
+
+    test("[GET] dynamic server response") {
+        val dynamicResponse: (Request) => StaticServerResponse = {
+            request =>
+                println("I use dynamic code !!!")
+                StaticServerResponse(Text_Plain, "OK dynamic", 200)
+        }
+
+        val route = GET (
+            path = "/test",
+            response = DynamicServerResponse(dynamicResponse)
+        )
+
+        server = new StubServer(8080, route).start
+
+        RestAssured
+            .expect()
+                .statusCode(200)
+                .content(containsString("OK dynamic"))
+            .when()
+                .get("http://localhost:8080/test")
     }
 }
