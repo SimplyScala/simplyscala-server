@@ -2,21 +2,10 @@ package fr.simply
 
 import org.simpleframework.transport.connect.SocketConnection
 import java.net.{BindException, InetSocketAddress, SocketAddress}
+import util.{Text_Plain, ContentType}
 
 case class ServerRoute(restVerb: RestVerb, path: String, response: ServerResponse, params: Map[String, String] = Map())
 case class ServerResponse(contentType: ContentType, body: String, code: Int)
-
-trait ContentType
-
-object ContentType {
-    def apply(contentType: String): ContentType = ContentTypeBuilder(contentType)
-}
-
-sealed case class ContentTypeBuilder(contentType: String) extends ContentType { override def toString = contentType }
-case object Text_Plain extends ContentType { override def toString = "text/plain" }
-case object Text_Json extends ContentType { override def toString = "text/json" }
-case object Text_Html extends ContentType { override def toString = "text/html" }
-case object Image_Jpeg extends ContentType { override def toString = "image/jpeg" }
 
 object GET {
     def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =

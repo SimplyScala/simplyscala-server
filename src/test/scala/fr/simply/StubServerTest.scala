@@ -5,7 +5,7 @@ import org.scalatest.matchers.ShouldMatchers
 import net.sourceforge.jwebunit.junit.JWebUnit._
 import com.jayway.restassured.RestAssured
 import org.hamcrest.Matchers._
-import java.util
+import util.{ContentType, Text_Plain}
 
 class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
