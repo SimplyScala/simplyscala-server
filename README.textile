@@ -7,6 +7,8 @@ This works in a Java 6+ environment
 
 The actual project release version is "0.2":http://search.maven.org/#search|ga|1|simplyscala-server
 
+This project is under test. See test code coverage "here":http://simplyscala.github.com/simplyscala-server/
+
 h2. Roadmap
 
 * %{color:green;padding-right:164px}custom server's default response%                  %{color:green;font-weight:bold}OK%
