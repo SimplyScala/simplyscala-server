@@ -17,7 +17,9 @@ h2. Roadmap
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
-* compile in scala 2.10                                                                TODO
+* build in scala 2.10                                                                  TODO
+* inject fonction like Request => ServerResponse                                       TODO
+
 h2. Installation
 
 h3. Git repo
@@ -58,7 +60,7 @@ In your play! project Build file :
 
 h3. Simple JAR file
 
-
+http://search.maven.org/remotecontent?filepath=com/github/simplyscala/simplyscala-server_2.9.2/0.2/simplyscala-server_2.9.2-0.2.jar
 
 h2. Usage
 

@@ -24,7 +24,7 @@ class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) ex
         routes.exists {
             route =>
                 if(testRoute(request, route)) {
-                    response.set("Content-Type", route.response.contentType)
+                    response.set("Content-Type", route.response.contentType.toString)
                     response.setCode(route.response.code)
                     response.getPrintStream.println(route.response.body)
                     true
@@ -34,7 +34,7 @@ class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) ex
 
     private def defaultReponse(response: Response, request: Request) {
         println("defaultResponse")
-        response.set("Content-Type", defaultResponse.contentType)
+        response.set("Content-Type", defaultResponse.contentType.toString)
         response.setCode(defaultResponse.code)
         response.getPrintStream.println(defaultResponse.body)
         /*response.getPrintStream.println("names : " + request.getNames)
