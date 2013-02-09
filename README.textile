@@ -1,6 +1,6 @@
 h1. SIMPLY SCALA SERVER
 
-This project provides a fast & ultra-lightweight http server (http://www.simpleframework.org/)
+This project provides a fast & ultra-lightweight http server (with "simpleframework":http://www.simpleframework.org/)
 with an API dedicated to define server's routes (request-response), start & stop server.
 
 This works in a Java 6+ environment
@@ -135,7 +135,7 @@ You can retrieve the effective port like this:
 
 h3. ContentType util
 
-with fr.simplyscala.util._ import you can use some utilities to declare server's content type
+with fr.simply.util._ import you can use some utilities to declare server's content type
 
 <pre>
 <code>
@@ -164,10 +164,16 @@ You can use i like that with "ScalaTest":http://www.scalatest.org/ :
 
         after { if (server != null) server.stop }
 
-        test("test server default response") {
-            server = new StubServer(8080).start
+        test("a test which need simplyscala-server") {
+            val route = GET (
+                path = "/test",
+                params = Map("param" -> "toto"),
+                response = ServerResponse(Text_Plain), "yo", 200)
+            )
 
-            // do some test with server
+            server = new StubServer(8080, route).start
+
+            someHttpRequest("http://localhost:%s/test?param=toto".format(server.portInUse))
         }
     }
 </code>
