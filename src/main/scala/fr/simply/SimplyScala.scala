@@ -4,7 +4,7 @@ import org.simpleframework.http.core.Container
 import org.simpleframework.http.Response
 import org.simpleframework.http.Request
 
-class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) extends Container {
+class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRoute]) extends Container {
 
     def handle(request: Request, response: Response) {
         val time = System.currentTimeMillis
@@ -23,12 +23,10 @@ class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) ex
     private def requestMatchWithRoute(request: Request, response: Response, routes: List[ServerRoute]): Boolean = {
         routes.exists {
             route =>
-                if(testRoute(request, route)) {
-                    response.set("Content-Type", route.response.contentType.toString)
-                    response.setCode(route.response.code)
-                    response.getPrintStream.println(route.response.body)
-                    true
-                } else false
+                route.response match {
+                    case staticResponse: StaticServerResponse => makeStaticResponse(request, response, route)
+                    case _ => println("error for now !!!"); false
+                }
         }
     }
 
@@ -45,6 +43,16 @@ class SimplyScala(defaultResponse: ServerResponse, routes: List[ServerRoute]) ex
 
         /*response.getPrintStream.println("verb : " + routes.head.restVerb)
         response.getPrintStream.println("path : " + routes.head.path)*/
+    }
+
+    private def makeStaticResponse(request: Request, response: Response, route: ServerRoute): Boolean = {
+        if(testRoute(request, route)) {
+            val staticResponse = route.response.asInstanceOf[StaticServerResponse]
+            response.set("Content-Type", staticResponse.contentType.toString)
+            response.setCode(staticResponse.code)
+            response.getPrintStream.println(staticResponse.body)
+            true
+        } else false
     }
 
     private def testRoute(request: Request, route: ServerRoute): Boolean = {

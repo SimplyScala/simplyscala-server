@@ -39,7 +39,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         val route = GET (
             path = "/test",                 // pattern pour les paths
             params = Map("param1" -> "toto"),
-            response = ServerResponse(Text_Plain, "yo", 200)
+            response = StaticServerResponse(Text_Plain, "yo", 200)
         )
 
         server = new StubServer(8080, route).start
@@ -54,7 +54,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     test("[GET] test pattern uses for path route") {
         val route = GET (
             path = "/test*",
-            response = ServerResponse(Text_Plain, "yo", 200)
+            response = StaticServerResponse(Text_Plain, "yo", 200)
         )
 
         server = new StubServer(8080, route).start
@@ -80,7 +80,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         val route = POST (
             path = "/test",
             params = Map("param1" -> "toto"),
-            response = ServerResponse(Text_Plain, "yo", 200)
+            response = StaticServerResponse(Text_Plain, "yo", 200)
         )
 
         server = new StubServer(8080, route).start
@@ -96,6 +96,6 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("content type builder") {
-        ServerResponse(ContentType("text/plain"), "yo", 200).contentType.toString should be ("text/plain")
+        StaticServerResponse(ContentType("text/plain"), "yo", 200).contentType.toString should be ("text/plain")
     }
 }

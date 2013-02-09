@@ -4,8 +4,13 @@ import org.simpleframework.transport.connect.SocketConnection
 import java.net.{BindException, InetSocketAddress, SocketAddress}
 import util.{Text_Plain, ContentType}
 
-case class ServerRoute(restVerb: RestVerb, path: String, response: ServerResponse, params: Map[String, String] = Map())
-case class ServerResponse(contentType: ContentType, body: String, code: Int)
+case class ServerRoute(restVerb: RestVerb,
+                       path: String, response: ServerResponse,
+                       params: Map[String, String] = Map())
+
+trait ServerResponse
+case class StaticServerResponse(contentType: ContentType, body: String, code: Int) extends ServerResponse
+//case class DynamicServerResponse(response: Request => ServerResponse) extends ServerResponse
 
 object GET {
     def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
@@ -18,7 +23,7 @@ object POST {
 }
 
 class StubServer(port: Int, routes: ServerRoute*) {
-    private var defaultResponse = ServerResponse(Text_Plain, "error", 404)
+    private var defaultResponse = StaticServerResponse(Text_Plain, "error", 404)
     private var simplyServer: SocketConnection = _
     private var portUsed = port
 
@@ -32,7 +37,7 @@ class StubServer(port: Int, routes: ServerRoute*) {
     def stop = if (simplyServer != null) simplyServer.close()
 
     def defaultResponse(contentType: ContentType, body: String, responseCode: Int): StubServer = {
-        this.defaultResponse = ServerResponse(contentType, body, responseCode)
+        this.defaultResponse = StaticServerResponse(contentType, body, responseCode)
         this
     }
 
