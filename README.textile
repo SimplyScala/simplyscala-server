@@ -129,6 +129,10 @@ h3. Build POST request route with param
 
 h3. Build request with dynamic server response
 
+Since 0.3 version, you able to define some dynamic server response.
+To do that, you must define function typed as Request => StaticServerResponse, which permit use some parameters of the
+server request to build a response.
+
 <pre>
 <code>
     import org.simpleframework.http.Request
