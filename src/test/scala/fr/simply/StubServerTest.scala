@@ -101,7 +101,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("[GET] dynamic server response") {
-        val dynamicResponse: (Request) => StaticServerResponse = {
+        val dynamicResponse: Request => StaticServerResponse = {
             request =>
                 println("I use dynamic code !!!")
                 StaticServerResponse(Text_Plain, "OK dynamic", 200)

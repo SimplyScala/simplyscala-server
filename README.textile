@@ -138,7 +138,7 @@ server request to build a response.
     import org.simpleframework.http.Request
     ...
 
-    val dynamicResponse = {
+    val dynamicResponse: Request => StaticServerResponse = {
         request =>
             println("I use dynamic code !!!")
             StaticServerResponse(Text_Plain, "OK dynamic", 200)
