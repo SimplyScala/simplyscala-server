@@ -5,7 +5,11 @@ with an API dedicated to define server's routes (request-response), start & stop
 
 This works in a Java 6+ environment
 
-The actual project release version is "0.2":http://search.maven.org/#search|ga|1|simplyscala-server
+The actual project release version is "0.3":http://search.maven.org/#search|ga|1|simplyscala-server
+
+Be careful ! Between 0.2 & 0.3 version :
+    * signature of ServerResponse was change(ServerResponse => StaticServerResponse & DynamicServerResponse). It is not retro-compatible !
+    * you can't use String to type your content-type response but fr.simply.util.ContentType builder or some fr.simply.util._ objects
 
 This project is under test. See test code coverage report "here":http://simplyscala.github.com/simplyscala-server/
 
@@ -18,12 +22,13 @@ h2. Roadmap
 * %{color:green;padding-right:312px}POST request%                                      %{color:green;font-weight:bold}OK%
 * %{color:green;padding-right:285px}cross compilation%                                 %{color:green;font-weight:bold}OK%
 * push on maven central repository                                                     OK
+* Dynamic ServerResponse                                                               OK
 
-* Dynamic ServerResponse                                                               TODO
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
 * build in scala 2.10                                                                  TODO
+* extends simplyscala-server                                                           TODO
 
 h2. Installation
 
@@ -38,14 +43,14 @@ h3. Maven dependency
     <dependency>
         <groupId>com.github.simplyscala</groupId>
         <artifactId>simplyscala-server_2.9.2</artifactId>
-        <version>0.2</version>
+        <version>0.3</version>
     </dependency>
 </code></pre>
 
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.2"
+    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.3"
 </code></pre>
 
     Only the following Scala versions 2.9.0, 2.9.1 & 2.9.2 are currently supported.
@@ -58,14 +63,14 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "com.github.simplyscala" %% "simplyscala-server" % "0.2"
+            "com.github.simplyscala" %% "simplyscala-server" % "0.3"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-"0.2 jar version":http://search.maven.org/remotecontent?filepath=com/github/simplyscala/simplyscala-server_2.9.2/0.2/simplyscala-server_2.9.2-0.2.jar
+"0.3 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/simplyscala-server_2.9.2/0.3/simplyscala-server_2.9.2-0.3.jar
 
 h2. Usage
 
@@ -99,7 +104,7 @@ h3. Build GET request routes with param
     val route = GET (
         path = "/test",
         params = Map("param1" -> "toto"),
-        response = ServerResponse(ContentType("text/plain"), "yo", 200)
+        response = StaticServerResponse(ContentType("text/plain"), "yo", 200)
     )
 
     val server = new StubServer(8080, route).start
@@ -115,7 +120,30 @@ h3. Build POST request route with param
     val route = POST (
         path = "/test",
         params = Map("param1" -> "toto"),
-        response = ServerResponse(ContentType("text/plain"), "yo", 200)
+        response = StaticServerResponse(ContentType("text/plain"), "yo", 200)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+</pre>
+
+h3. Build request with dynamic server response
+
+<pre>
+<code>
+    import org.simpleframework.http.Request
+    ...
+
+    val dynamicResponse = {
+        request =>
+            println("I use dynamic code !!!")
+            StaticServerResponse(Text_Plain, "OK dynamic", 200)
+        }
+
+    val route = GET (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = DynamicServerResponse(dynamicResponse)
     )
 
     val server = new StubServer(8080, route).start
@@ -144,7 +172,7 @@ with fr.simply.util._ import you can use some utilities to declare server's cont
     val route = GET (
         path = "/test",
         params = Map("param1" -> "toto"),
-        response = ServerResponse(Text_Plain), "yo", 200)
+        response = StaticServerResponse(Text_Plain), "yo", 200)
     )
 
     val server = new StubServer(8080, route).start
@@ -170,7 +198,7 @@ You can use it like that with "ScalaTest":http://www.scalatest.org/ :
             val route = GET (
                 path = "/test",
                 params = Map("param" -> "toto"),
-                response = ServerResponse(Text_Plain), "yo", 200)
+                response = StaticServerResponse(Text_Plain), "yo", 200)
             )
 
             server = new StubServer(8080, route).start

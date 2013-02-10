@@ -12,7 +12,7 @@ object SimplyScalaServerBuild extends Build {
             description := "provides a fast & ultra-lightweight http server with an API dedicated to define server’s " +
                 "routes (request-response), start & stop server",
 
-            version := "0.3-SNAPSHOT",
+            version := "0.3",
 
             scalaVersion := "2.9.2",
 
@@ -31,24 +31,24 @@ object SimplyScalaServerBuild extends Build {
 
             pomExtra := (
                 <url>https://github.com/SimplyScala/simplyscala-server</url>
-                    <licenses>
-                        <license>
-                            <name>GPLv3</name>
-                            <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
-                            <distribution>repo</distribution>
-                        </license>
-                    </licenses>
-                    <scm>
-                        <url>git@github.com:SimplyScala/simplyscala-server.git</url>
-                        <connection>scm:git:git@github.com:SimplyScala/simplyscala-server.git</connection>
-                    </scm>
-                    <developers>
-                        <developer>
-                            <id>ugobourdon</id>
-                            <name>bourdon.ugo@gmail.com</name>
-                            <url>https://github.com/ubourdon</url>
-                        </developer>
-                    </developers>
+                <licenses>
+                    <license>
+                        <name>GPLv3</name>
+                        <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+                        <distribution>repo</distribution>
+                    </license>
+                </licenses>
+                <scm>
+                    <url>git@github.com:SimplyScala/simplyscala-server.git</url>
+                    <connection>scm:git:git@github.com:SimplyScala/simplyscala-server.git</connection>
+                </scm>
+                <developers>
+                    <developer>
+                        <id>ugobourdon</id>
+                        <name>bourdon.ugo@gmail.com</name>
+                        <url>https://github.com/ubourdon</url>
+                    </developer>
+                </developers>
             ),
 
             publishTo <<= version { v: String =>
