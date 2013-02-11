@@ -220,11 +220,11 @@ If you want to stop the server & stay immutable, you can use StubServerFixtureTr
 
 <pre>
 <code>
-package fr.simply.fixture
 
 import org.scalatest.FunSuite
 import fr.simply.{StaticServerResponse, GET}
 import fr.simply.util.Text_Plain
+import fr.simply.fixture.StubServerFixture
 
     class StubServerFixtureTest extends FunSuite with StubServerFixture {
 
