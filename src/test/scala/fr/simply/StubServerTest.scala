@@ -119,6 +119,6 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
                 .statusCode(200)
                 .content(containsString("OK dynamic"))
             .when()
-                .get("http://localhost:8080/test")
+                .get("http://localhost:%s/test".format(server.portInUse))
     }
 }

@@ -27,3 +27,4 @@ h2. Version 0.4
     * delivery date : ???
     * developer(s)  : bourdon.ugo@gmail.com
     * features      :
+        ** stub server fixture

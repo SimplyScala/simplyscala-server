@@ -24,6 +24,7 @@ h2. Roadmap
 * push on maven central repository                                                     OK
 * Dynamic ServerResponse                                                               OK
 
+* Stub Server Fixture Trait                                                            TODO
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
@@ -187,16 +188,14 @@ if we don't have the needed content type util you can use <code>ContentType("you
 
 h2. Uses in test context
 
+h3. Simple usage in test context
+
 simplyscala-server is particularly useful in unit test context.
 You can use it like that with "ScalaTest":http://www.scalatest.org/ :
 
 <pre>
 <code>
-    class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
-
-        var server: StubServer = _
-
-        after { if (server != null) server.stop }
+    class StubServerTest extends FunSuite {
 
         test("a test which needed simplyscala-server") {
             val route = GET (
@@ -205,9 +204,42 @@ You can use it like that with "ScalaTest":http://www.scalatest.org/ :
                 response = StaticServerResponse(Text_Plain), "yo", 200)
             )
 
-            server = new StubServer(8080, route).start
+            val server = new StubServer(8080, route).start
 
             someHttpRequest("http://localhost:%s/test?param=toto".format(server.portInUse))
+        }
+    }
+</code>
+</pre>
+
+You must not stop the server thanks to when a define port is already used, simplyscala-server start server with next port.
+
+h3. using fixture to manipulate immutable server reference (will be in 0.4 version, not in production today)
+
+If you want to stop the server & stay immutable, you can use StubServerFixtureTrait like that
+
+<pre>
+<code>
+package fr.simply.fixture
+
+import org.scalatest.FunSuite
+import fr.simply.{StaticServerResponse, GET}
+import fr.simply.util.Text_Plain
+
+    class StubServerFixtureTest extends FunSuite with StubServerFixture {
+
+        test("test stub server fixture") {
+            val route = GET (
+                path = "/test",
+                params = Map("param1" -> "toto"),
+                response = StaticServerResponse(Text_Plain, "yo", 200)
+            )
+
+            withStubServerFixture(8080, route) { server =>
+                // you can continue your test with server reference
+                // in this fixture your server stub is started
+                // at the en d of this fixture your server is stopped
+            }
         }
     }
 </code>
