@@ -177,7 +177,7 @@ with fr.simply.util._ import you can use some utilities to declare server's cont
     val route = GET (
         path = "/test",
         params = Map("param1" -> "toto"),
-        response = StaticServerResponse(Text_Plain), "yo", 200)
+        response = StaticServerResponse(Text_Plain, "yo", 200)
     )
 
     val server = new StubServer(8080, route).start
@@ -201,7 +201,7 @@ You can use it like that with "ScalaTest":http://www.scalatest.org/ :
             val route = GET (
                 path = "/test",
                 params = Map("param" -> "toto"),
-                response = StaticServerResponse(Text_Plain), "yo", 200)
+                response = StaticServerResponse(Text_Plain, "yo", 200)
             )
 
             val server = new StubServer(8080, route).start
