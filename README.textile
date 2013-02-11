@@ -212,7 +212,7 @@ You can use it like that with "ScalaTest":http://www.scalatest.org/ :
 </code>
 </pre>
 
-You must not stop the server thanks to when a define port is already used, simplyscala-server start server with next port.
+You you do not have to stop the server thanks to when a define port is already used, simplyscala-server start server with next port and return reference to it via portInUse method.
 
 h3. using fixture to manipulate immutable server reference (will be in 0.4 version, not in production today)
 
@@ -244,6 +244,8 @@ import fr.simply.fixture.StubServerFixture
     }
 </code>
 </pre>
+
+"ScalaTestFixture":http://www.scalatest.org/user_guide/sharing_fixtures
 
 h5. footpage
 
