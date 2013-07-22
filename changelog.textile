@@ -28,3 +28,4 @@ h2. Version 0.4
     * developer(s)  : bourdon.ugo@gmail.com
     * features      :
         ** stub server fixture
+        ** scala 2.10 compilation
