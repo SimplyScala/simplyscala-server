@@ -36,3 +36,5 @@ h2. Version 0.5
     * delivery date : ???
     * developer(s)  : bourdon.ugo@gmail.com
     * features      :
+        ** add new Content type helper - application/json etc ...
+        ** 
