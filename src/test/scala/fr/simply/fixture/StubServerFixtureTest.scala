@@ -27,4 +27,23 @@ class StubServerFixtureTest extends FunSuite with ShouldMatchers with StubServer
                     .get("http://localhost:%s/test".format(server.portInUse))
         }
     }
+
+    test("test stub server fixture with 2nd tests") {
+        val route = GET (
+            path = "/test",
+            params = Map("param1" -> "titi"),
+            response = StaticServerResponse(Text_Plain, "ya", 200)
+        )
+
+        withStubServerFixture(8080, route) { server =>
+            RestAssured
+                .given()
+                    .parameters("param1", "titi")
+                .expect()
+                    .statusCode(200)
+                .   content(containsString("ya"))
+                .when()
+                    .get("http://localhost:%s/test".format(server.portInUse))
+        }
+    }
 }

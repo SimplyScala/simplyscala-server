@@ -14,14 +14,14 @@ object SimplyScalaServerBuild extends Build {
 
             version := "0.4-SNAPSHOT",
 
-            scalaVersion := "2.9.2",
+            scalaVersion := "2.10.2",
 
-            crossScalaVersions := Seq("2.9.0", "2.9.1", "2.9.2"),
+            crossScalaVersions := Seq("2.9.0", "2.9.1", "2.9.2", "2.10.0", "2.10.1", "2.10.2"),
 
             libraryDependencies ++= Seq(
                 "org.simpleframework" % "simple" % "4.1.21",
 
-                "org.scalatest" %% "scalatest" % "1.8" % "test",
+                "org.scalatest" %% "scalatest" % "1.9.1" % "test",
                 "com.jayway.restassured" % "rest-assured" % "1.7.2" % "test"
             ),
 
