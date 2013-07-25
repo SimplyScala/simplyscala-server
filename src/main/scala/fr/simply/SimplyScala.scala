@@ -31,7 +31,8 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
     }
 
     private def defaultReponse(response: Response, request: Request) {
-        println("defaultResponse")
+        println(s"defaultResponse from request : ${request.getMethod} - ${request.getAddress}")
+
         response.set("Content-Type", defaultResponse.contentType.toString)
         response.setCode(defaultResponse.code)
         response.getPrintStream.println(defaultResponse.body)

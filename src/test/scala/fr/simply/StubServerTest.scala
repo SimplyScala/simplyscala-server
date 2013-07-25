@@ -32,7 +32,7 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
                 .statusCode(400)
                 .content(containsString("default"))
             .when()
-                .get("http://localhost:8080/")
+                .get("http://localhost:8080/test?param1=toto")
     }
 
     test("[GET] simple GET request with one param") {
