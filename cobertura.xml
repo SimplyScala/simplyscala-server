@@ -1,143 +1,156 @@
-<coverage line-rate="0.96">
+<coverage line-rate="0.98">
   <packages>
-    <package name="fr.simply" line-rate="0.96">
+    <package line-rate="0.98" name="fr.simply">
       <classes>
-        <class filename="src/main/scala/fr/simply/StubServer.scala" name="DynamicServerResponse" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="DynamicServerResponse" filename="src/main/scala/fr/simply/StubServer.scala">
+          <methods/>
           <lines>
-            <line number="15" hits="1"></line>
+            <line number="15" hits="1"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/StubServer.scala" name="GET" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="GET" filename="src/main/scala/fr/simply/StubServer.scala">
+          <methods/>
           <lines>
-            <line number="19" hits="1"></line>
+            <line number="19" hits="1"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/RestVerb.scala" name="Get" line-rate="0">
-          <methods></methods>
+        <class line-rate="0" name="Get" filename="src/main/scala/fr/simply/RestVerb.scala">
+          <methods/>
           <lines> </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/StubServer.scala" name="POST" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="POST" filename="src/main/scala/fr/simply/StubServer.scala">
+          <methods/>
           <lines>
-            <line number="24" hits="1"></line>
+            <line number="24" hits="1"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/RestVerb.scala" name="Post" line-rate="0">
-          <methods></methods>
+        <class line-rate="0" name="Post" filename="src/main/scala/fr/simply/RestVerb.scala">
+          <methods/>
           <lines> </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/RestVerb.scala" name="RestVerb" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="RestVerb" filename="src/main/scala/fr/simply/RestVerb.scala">
+          <methods/>
           <lines>
-            <line number="3" hits="1"></line>
-            <line number="4" hits="1"></line>
+            <line number="3" hits="1"/>
+            <line number="4" hits="1"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/StubServer.scala" name="ServerResponse" line-rate="0">
-          <methods></methods>
+        <class line-rate="0" name="ServerResponse" filename="src/main/scala/fr/simply/StubServer.scala">
+          <methods/>
           <lines> </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/StubServer.scala" name="ServerRoute" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="ServerRoute" filename="src/main/scala/fr/simply/StubServer.scala">
+          <methods/>
           <lines>
-            <line number="8" hits="1"></line>
+            <line number="8" hits="1"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/SimplyScala.scala" name="SimplyScala" line-rate="0.94">
-          <methods></methods>
+        <class line-rate="0.97" name="SimplyScala" filename="src/main/scala/fr/simply/SimplyScala.scala">
+          <methods/>
           <lines>
-            <line number="7" hits="1"></line>
-            <line number="10" hits="1"></line>
-            <line number="12" hits="1"></line>
-            <line number="13" hits="1"></line>
-            <line number="14" hits="1"></line>
-            <line number="16" hits="2"></line>
-            <line number="17" hits="1"></line>
-            <line number="19" hits="1"></line>
-            <line number="20" hits="1"></line>
-            <line number="24" hits="1"></line>
-            <line number="26" hits="1"></line>
-            <line number="27" hits="1"></line>
-            <line number="28" hits="1"></line>
-            <line number="34" hits="1"></line>
-            <line number="35" hits="1"></line>
-            <line number="36" hits="1"></line>
-            <line number="37" hits="1"></line>
-            <line number="49" hits="1"></line>
-            <line number="50" hits="1"></line>
-            <line number="51" hits="1"></line>
-            <line number="52" hits="1"></line>
-            <line number="53" hits="0"></line>
-            <line number="57" hits="1"></line>
-            <line number="58" hits="1"></line>
-            <line number="59" hits="1"></line>
-            <line number="60" hits="1"></line>
-            <line number="61" hits="0"></line>
-            <line number="65" hits="1"></line>
-            <line number="71" hits="1"></line>
-            <line number="72" hits="1"></line>
-            <line number="73" hits="1"></line>
-            <line number="77" hits="1"></line>
-            <line number="78" hits="2"></line>
-            <line number="79" hits="1"></line>
-            <line number="83" hits="3"></line>
+            <line number="7" hits="1"/>
+            <line number="10" hits="1"/>
+            <line number="12" hits="1"/>
+            <line number="13" hits="1"/>
+            <line number="14" hits="1"/>
+            <line number="16" hits="2"/>
+            <line number="17" hits="1"/>
+            <line number="19" hits="1"/>
+            <line number="20" hits="1"/>
+            <line number="24" hits="1"/>
+            <line number="26" hits="1"/>
+            <line number="27" hits="1"/>
+            <line number="28" hits="1"/>
+            <line number="34" hits="1"/>
+            <line number="36" hits="1"/>
+            <line number="37" hits="1"/>
+            <line number="38" hits="1"/>
+            <line number="50" hits="1"/>
+            <line number="51" hits="1"/>
+            <line number="52" hits="1"/>
+            <line number="53" hits="1"/>
+            <line number="54" hits="1"/>
+            <line number="58" hits="1"/>
+            <line number="59" hits="1"/>
+            <line number="60" hits="1"/>
+            <line number="61" hits="1"/>
+            <line number="62" hits="0"/>
+            <line number="66" hits="1"/>
+            <line number="72" hits="1"/>
+            <line number="73" hits="1"/>
+            <line number="74" hits="1"/>
+            <line number="78" hits="1"/>
+            <line number="79" hits="2"/>
+            <line number="80" hits="1"/>
+            <line number="84" hits="3"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/StubServer.scala" name="StaticServerResponse" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="StaticServerResponse" filename="src/main/scala/fr/simply/StubServer.scala">
+          <methods/>
           <lines>
-            <line number="14" hits="1"></line>
+            <line number="14" hits="1"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/StubServer.scala" name="StubServer" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="StubServer" filename="src/main/scala/fr/simply/StubServer.scala">
+          <methods/>
           <lines>
-            <line number="27" hits="1"></line>
-            <line number="28" hits="1"></line>
-            <line number="30" hits="1"></line>
-            <line number="32" hits="1"></line>
-            <line number="35" hits="1"></line>
-            <line number="36" hits="1"></line>
-            <line number="39" hits="2"></line>
-            <line number="42" hits="1"></line>
-            <line number="43" hits="1"></line>
-            <line number="47" hits="1"></line>
-            <line number="48" hits="1"></line>
-            <line number="50" hits="1"></line>
-            <line number="54" hits="1"></line>
-            <line number="57" hits="1"></line>
-            <line number="58" hits="1"></line>
-            <line number="60" hits="1"></line>
-            <line number="63" hits="1"></line>
+            <line number="27" hits="1"/>
+            <line number="28" hits="1"/>
+            <line number="30" hits="1"/>
+            <line number="32" hits="1"/>
+            <line number="35" hits="1"/>
+            <line number="36" hits="1"/>
+            <line number="39" hits="2"/>
+            <line number="42" hits="1"/>
+            <line number="43" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="50" hits="1"/>
+            <line number="54" hits="1"/>
+            <line number="57" hits="1"/>
+            <line number="58" hits="1"/>
+            <line number="60" hits="1"/>
+            <line number="63" hits="1"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="fr.simply.util" line-rate="1">
+    <package line-rate="1" name="fr.simply.fixture">
       <classes>
-        <class filename="src/main/scala/fr/simply/util/ContentType.scala" name="ContentType" line-rate="1">
-          <methods></methods>
+        <class line-rate="1" name="StubServerFixture" filename="src/main/scala/fr/simply/fixture/StubServerFixture.scala">
+          <methods/>
           <lines>
-            <line number="3" hits="1"></line>
-            <line number="4" hits="1"></line>
+            <line number="7" hits="1"/>
+            <line number="9" hits="1"/>
+            <line number="10" hits="1"/>
+            <line number="11" hits="1"/>
           </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/util/ContentType.scala" name="Image_Jpeg" line-rate="0">
-          <methods></methods>
+      </classes>
+    </package>
+    <package line-rate="1" name="fr.simply.util">
+      <classes>
+        <class line-rate="1" name="ContentType" filename="src/main/scala/fr/simply/util/ContentType.scala">
+          <methods/>
+          <lines>
+            <line number="3" hits="1"/>
+            <line number="4" hits="1"/>
+          </lines>
+        </class>
+        <class line-rate="0" name="Image_Jpeg" filename="src/main/scala/fr/simply/util/ContentType.scala">
+          <methods/>
           <lines> </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/util/ContentType.scala" name="Text_Html" line-rate="0">
-          <methods></methods>
+        <class line-rate="0" name="Text_Html" filename="src/main/scala/fr/simply/util/ContentType.scala">
+          <methods/>
           <lines> </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/util/ContentType.scala" name="Text_Json" line-rate="0">
-          <methods></methods>
+        <class line-rate="0" name="Text_Json" filename="src/main/scala/fr/simply/util/ContentType.scala">
+          <methods/>
           <lines> </lines>
         </class>
-        <class filename="src/main/scala/fr/simply/util/ContentType.scala" name="Text_Plain" line-rate="0">
-          <methods></methods>
+        <class line-rate="0" name="Text_Plain" filename="src/main/scala/fr/simply/util/ContentType.scala">
+          <methods/>
           <lines> </lines>
         </class>
       </classes>

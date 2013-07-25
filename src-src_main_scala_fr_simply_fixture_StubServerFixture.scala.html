@@ -1,0 +1,69 @@
+<table class="classes"><tbody><tr>
+      <td class="barContainerLeft"><a href="#">&#x200B;fr/&#x200B;simply/&#x200B;fixture/<span class="header">&#x200B;StubServerFixture.scala</span></a></td>
+      <td class="barContainerRight"><div class="percentages">
+      <div class="bar">
+        <div class="percentage">100 %</div>
+        <div class="greenBar" style="width:200px;">&nbsp;</div>
+      </div>
+    </div></td>
+    </tr><tr>
+      <td class="barContainerLeft"><a href="src-src_main_scala_fr_simply_fixture_StubServerFixture.scala.html#Trait_fr_simply_fixture_StubServerFixture"><img src="trait.png"/>StubServerFixture</a></td>
+      <td class="barContainerRight"><div class="percentages">
+      <div class="bar">
+        <div class="percentage">100 %</div>
+        <div class="greenBar" style="width:200px;">&nbsp;</div>
+      </div>
+    </div></td>
+    </tr></tbody></table><table class="source"><tbody><tr>
+            <td class="black">1</td>
+            <td>package fr.simply.fixture
+</td>
+          </tr><tr>
+            <td class="black">2</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">3</td>
+            <td>import fr.simply.{StubServer, ServerRoute}
+</td>
+          </tr><tr>
+            <td class="black">4</td>
+            <td>
+</td>
+          </tr><tr>
+            <td class="black">5</td>
+            <td><a id="Trait_fr_simply_fixture_StubServerFixture"/>trait StubServerFixture {
+</td>
+          </tr><tr>
+            <td class="black">6</td>
+            <td>    def withStubServerFixture(port: Int, routes: ServerRoute*)(fixture: StubServer =&gt; Any) {
+</td>
+          </tr><tr>
+            <td class="green">7</td>
+            <td>        val server: StubServer = new StubServer(port, routes:_*)
+</td>
+          </tr><tr>
+            <td class="black">8</td>
+            <td>        try {
+</td>
+          </tr><tr>
+            <td class="green">9</td>
+            <td>            server.start
+</td>
+          </tr><tr>
+            <td class="green">10</td>
+            <td>            fixture(server)
+</td>
+          </tr><tr>
+            <td class="green">11</td>
+            <td>        } finally server.stop
+</td>
+          </tr><tr>
+            <td class="black">12</td>
+            <td>    }
+</td>
+          </tr><tr>
+            <td class="black">13</td>
+            <td>}
+</td>
+          </tr></tbody></table>
