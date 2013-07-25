@@ -5,11 +5,14 @@ with an API dedicated to define server's routes (request-response), start & stop
 
 This works in a Java 6+ environment
 
-The actual project release version is "0.3":http://search.maven.org/#search|ga|1|simplyscala-server
+The actual project release version is "0.4":http://search.maven.org/#search|ga|1|simplyscala-server
 
 Be careful ! Between 0.2 & 0.3 version :
     * signature of ServerResponse was change(ServerResponse => StaticServerResponse & DynamicServerResponse). It is not retro-compatible !
     * you can't use String to type your content-type response but fr.simply.util.ContentType builder or some fr.simply.util._ objects
+
+Be careful ! Between 0.3 & 0.4 version :
+   * 0.4 version works under scala 2.10.x & don't support 2.9.x version anymore
 
 This project is under test. See test code coverage report "here":http://simplyscala.github.com/simplyscala-server/
 
@@ -23,12 +26,12 @@ h2. Roadmap
 * %{color:green;padding-right:285px}cross compilation%                                 %{color:green;font-weight:bold}OK%
 * push on maven central repository                                                     OK
 * Dynamic ServerResponse                                                               OK
+* build in scala 2.10                                                                  OK
+* Stub Server Fixture Trait                                                            OK
 
-* Stub Server Fixture Trait                                                            WIP
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
-* build in scala 2.10                                                                  WIP
 * extends simplyscala-server                                                           TODO
 
 h2. Installation
@@ -43,18 +46,18 @@ h3. Maven dependency
 <pre><code>
     <dependency>
         <groupId>com.github.simplyscala</groupId>
-        <artifactId>simplyscala-server_2.9.2</artifactId>
-        <version>0.3</version>
+        <artifactId>simplyscala-server_2.10</artifactId>
+        <version>0.4</version>
     </dependency>
 </code></pre>
 
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.3"
+    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.4"
 </code></pre>
 
-    Only the following Scala versions 2.9.0, 2.9.1 & 2.9.2 are currently supported.
+    Only the following Scala versions 2.10.x are currently supported.
 
 h4. Play! specific dependency management
 
@@ -64,14 +67,14 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "com.github.simplyscala" %% "simplyscala-server" % "0.3"
+            "com.github.simplyscala" %% "simplyscala-server" % "0.4"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-"0.3 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/simplyscala-server_2.9.2/0.3/simplyscala-server_2.9.2-0.3.jar
+"0.4 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/simplyscala-server_2.10/0.4/simplyscala-server_2.10-0.4.jar
 
 h3. Try SNAPSHOT version
 
@@ -94,16 +97,16 @@ h4. with Maven
    <dependency>
       <groupId>com.github.simplyscala</groupId>
       <artifactId>simplyscala-server_2.10</artifactId>
-      <version>0.4-SNAPSHOT</version>
+      <version>0.5-SNAPSHOT</version>
     </dependency>
 </code></pre>
 
-h4. with sbt
+h4. with SBT
 
 <pre><code>
    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
-   libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.4-SNAPSHOT"
+   libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.5-SNAPSHOT"
 </code></pre>
 
 h2. Usage
@@ -247,7 +250,7 @@ You can use it like that with "ScalaTest":http://www.scalatest.org/ :
 
 You you do not have to stop the server thanks to when a define port is already used, simplyscala-server start server with next port and return reference to it via portInUse method.
 
-h3. using fixture to manipulate immutable server reference (will be in 0.4 version, not in production today)
+h3. using fixture to manipulate immutable server reference (in 0.4 version)
 
 If you want to stop the server & stay immutable, you can use StubServerFixtureTrait like that
 
