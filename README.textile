@@ -24,11 +24,11 @@ h2. Roadmap
 * push on maven central repository                                                     OK
 * Dynamic ServerResponse                                                               OK
 
-* Stub Server Fixture Trait                                                            TODO
+* Stub Server Fixture Trait                                                            WIP
 * %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
 * %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
-* build in scala 2.10                                                                  TODO
+* build in scala 2.10                                                                  WIP
 * extends simplyscala-server                                                           TODO
 
 h2. Installation
