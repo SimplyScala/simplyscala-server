@@ -29,8 +29,8 @@ h2. Roadmap
 * build in scala 2.10                                                                  OK
 * Stub Server Fixture Trait                                                            OK
 
-* %{color:orange;padding-right:323px}PUT request%                                      WIP
-* %{color:orange;padding-right:312px}HEAD request%                                     WIP
+* PUT request                                                                          WIP
+* HEAD request                                                                         WIP
 * DELETE request                                                                       WIP
 * OTPIONS, PATCH request                                                               WIP
 * set response headers                                                                 WIP
@@ -287,7 +287,33 @@ import fr.simply.fixture.StubServerFixture
 
 "ScalaTestFixture":http://www.scalatest.org/user_guide/sharing_fixtures
 
-h3. adding values in server response's header
+h3. adding values in server response's header (in 0.5 version)
+
+You might need manage server response header, for example in the case of HEAD response.
+
+<pre>
+<code>
+
+import org.scalatest.FunSuite
+import fr.simply.{StaticServerResponse, HEAD}
+import fr.simply.util.Text_Plain
+import fr.simply.fixture.StubServerFixture
+
+    class StubServerFixtureTest extends FunSuite with StubServerFixture {
+
+        test("test stub server fixture") {
+            val route = HEAD (
+                path = "/test",
+                response = StaticServerResponse(Text_Plain, "", 200, Map("headerName" -> "value"))
+            )
+
+            withStubServerFixture(8080, route) { server =>
+                // the server will have key-value pair "headerName" -> "value" in header response
+            }
+        }
+    }
+</code>
+</pre>
 
 h5. footpage
 
