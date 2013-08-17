@@ -12,7 +12,7 @@ object SimplyScalaServerBuild extends Build {
             description := "provides a fast & ultra-lightweight http server with an API dedicated to define server’s " +
                 "routes (request-response), start & stop server",
 
-            version := "0.5-SNAPSHOT",
+            version := "0.6-SNAPSHOT",
 
             scalaVersion := "2.10.2",
 
