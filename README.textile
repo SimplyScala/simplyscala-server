@@ -29,9 +29,13 @@ h2. Roadmap
 * build in scala 2.10                                                                  OK
 * Stub Server Fixture Trait                                                            OK
 
-* %{color:orange;padding-right:323px}PUT request%                                      %{color:orange;font-weight:bold}TODO%
-* %{color:orange;padding-right:312px}HEAD request%                                     %{color:orange;font-weight:bold}TODO%
-* %{color:orange;padding-right:330px}Java API%                                         %{color:orange;font-weight:bold}TODO%
+* %{color:orange;padding-right:323px}PUT request%                                      WIP
+* %{color:orange;padding-right:312px}HEAD request%                                     WIP
+* DELETE request                                                                       WIP
+* OTPIONS, PATCH request                                                               WIP
+* set response headers                                                                 WIP
+
+* %{color:orange;padding-right:330px}Java API%                                         TODO
 * extends simplyscala-server                                                           TODO
 
 h2. Installation
@@ -282,6 +286,8 @@ import fr.simply.fixture.StubServerFixture
 </pre>
 
 "ScalaTestFixture":http://www.scalatest.org/user_guide/sharing_fixtures
+
+h3. adding values in server response's header
 
 h5. footpage
 

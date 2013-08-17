@@ -72,6 +72,8 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
     private def makeResponse(response: Response, serverResponse: StaticServerResponse) {
         response.setValue("Content-Type", serverResponse.contentType.toString)
         response.setCode(serverResponse.code)
+        serverResponse.headers.foreach { case (k,v) => response.setValue(k,v) }
+
         response.getPrintStream.println(serverResponse.body)
     }
 

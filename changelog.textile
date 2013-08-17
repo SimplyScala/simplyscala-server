@@ -38,3 +38,4 @@ h2. Version 0.5
     * features      :
         ** use 5.1.5 simpleframework version (instead of 4 version)
         ** PUT, DELETE, OPTIONS, PATCH, HEAD request
+        ** add headers in server response

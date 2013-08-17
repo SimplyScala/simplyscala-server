@@ -237,4 +237,23 @@ class StubServerTest extends FunSuite with ShouldMatchers with BeforeAndAfter wi
                     .patch(s"http://localhost:${server.portInUse}/test")
         }
     }
+
+    test("[HEAD] add params in headers response") {
+        val route = HEAD (
+            path="/test",
+            response = StaticServerResponse(Text_Plain, "", 200, Map("headerName" -> "value", "one" -> "two"))
+        )
+
+        withStubServerFixture(8080, route) { server =>
+            RestAssured
+                .given()
+                   .parameter("toto", "titi")
+                .expect()
+                    .statusCode(200)
+                    .header("headerName", "value")
+                    .header("one", "two")
+                    .when()
+                .head(s"http://localhost:${server.portInUse}/test")
+        }
+    }
 }

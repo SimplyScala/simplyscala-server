@@ -12,7 +12,7 @@ case class ServerRoute(restVerb: RestVerb,
                        params: Map[String, String] = Map())
 
 sealed trait ServerResponse
-case class StaticServerResponse(contentType: ContentType, body: String, code: Int) extends ServerResponse
+case class StaticServerResponse(contentType: ContentType, body: String, code: Int, headers: Map[String, String] = Map()) extends ServerResponse
 case class DynamicServerResponse(response: Request => StaticServerResponse) extends ServerResponse
 
 object GET {
