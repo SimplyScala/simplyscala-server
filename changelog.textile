@@ -33,9 +33,14 @@ h2. Version 0.4
         ** println request when defaultResponse
 
 h2. Version 0.5
-    * delivery date : ???
+    * delivery date : august 17th 2013
     * developer(s)  : bourdon.ugo@gmail.com
     * features      :
         ** use 5.1.5 simpleframework version (instead of 4 version)
         ** PUT, DELETE, OPTIONS, PATCH, HEAD request
         ** add headers in server response
+
+h2. Version 0.6
+    * delivery date : ???
+    * developer(s)  : bourdon.ugo@gmail.com
+    * features      : 
