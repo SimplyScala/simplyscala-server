@@ -19,7 +19,7 @@ object SimplyScalaServerBuild extends Build {
             crossScalaVersions := Seq("2.10.0", "2.10.1", "2.10.2"),
 
             libraryDependencies ++= Seq(
-                "org.simpleframework" % "simple" % "4.1.21",
+                "org.simpleframework" % "simple" % "5.1.5",
 
                 "org.scalatest" %% "scalatest" % "1.9.1" % "test",
                 "com.jayway.restassured" % "rest-assured" % "1.7.2" % "test"

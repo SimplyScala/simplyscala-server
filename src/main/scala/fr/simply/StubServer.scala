@@ -4,6 +4,7 @@ import org.simpleframework.transport.connect.SocketConnection
 import java.net.{BindException, InetSocketAddress, SocketAddress}
 import util.{Text_Plain, ContentType}
 import org.simpleframework.http.Request
+import org.simpleframework.http.core.ContainerServer
 
 case class ServerRoute(restVerb: RestVerb,
                        path: String,
@@ -45,7 +46,7 @@ class StubServer(port: Int, routes: ServerRoute*) {
 
     private def startServer: SocketConnection = {
         val container = new SimplyScala(defaultResponse, routes.toList)
-        val connection = new SocketConnection(container)
+        val connection = new SocketConnection(new ContainerServer(container))
 
         startServerWithAvailablePort(connection, port)
     }

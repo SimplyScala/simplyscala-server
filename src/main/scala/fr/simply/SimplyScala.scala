@@ -3,20 +3,21 @@ package fr.simply
 import org.simpleframework.http.core.Container
 import org.simpleframework.http.Response
 import org.simpleframework.http.Request
+import org.simpleframework.transport.Server
 
 class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRoute]) extends Container {
 
     def handle(request: Request, response: Response) {
         val time = System.currentTimeMillis
 
-        response.set("Server", "SimplyScala/1.0 (Simple 4.0)")
+        response.setValue("Server", "SimplyScalaServer/1.0 (Simple 4.0)")
         response.setDate("Date", time)
         response.setDate("Last-Modified", time)
 
         if(requestMatchWithRoute(request, response, routes)) println("one route match with request")
         else defaultReponse(response, request)
 
-        response.getPrintStream.close
+        response.getPrintStream.close()
         response.close()
     }
 
@@ -33,7 +34,7 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
     private def defaultReponse(response: Response, request: Request) {
         println(s"defaultResponse from request : ${request.getMethod} - ${request.getAddress}")
 
-        response.set("Content-Type", defaultResponse.contentType.toString)
+        response.setValue("Content-Type", defaultResponse.contentType.toString)
         response.setCode(defaultResponse.code)
         response.getPrintStream.println(defaultResponse.body)
         /*response.getPrintStream.println("names : " + request.getNames)
@@ -69,7 +70,7 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
     }
 
     private def makeResponse(response: Response, dynamicResponse: StaticServerResponse) {
-        response.set("Content-Type", dynamicResponse.contentType.toString)
+        response.setValue("Content-Type", dynamicResponse.contentType.toString)
         response.setCode(dynamicResponse.code)
         response.getPrintStream.println(dynamicResponse.body)
     }
