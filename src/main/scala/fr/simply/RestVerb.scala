@@ -1,11 +1,15 @@
 package fr.simply
 
-class RestVerb(restVerb: String) {
-    override def toString = restVerb
-}
+class RestVerb(restVerb: String) { override def toString = restVerb }
 
 case object Get extends RestVerb("GET")
 case object Post extends RestVerb("POST")
+case object Put extends RestVerb("PUT")
+case object Delete extends RestVerb("DELETE")
+case object Head extends RestVerb("HEAD")
+case object Options extends RestVerb("OPTIONS")
+case object Trace extends RestVerb("TRACE")
+case object Patch extends RestVerb("PATCH")
 
 /*class Method(method: String) {
   def unapply[T](req: HttpRequest[T]) =

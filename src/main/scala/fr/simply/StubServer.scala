@@ -11,7 +11,7 @@ case class ServerRoute(restVerb: RestVerb,
                        response: ServerResponse,
                        params: Map[String, String] = Map())
 
-trait ServerResponse
+sealed trait ServerResponse
 case class StaticServerResponse(contentType: ContentType, body: String, code: Int) extends ServerResponse
 case class DynamicServerResponse(response: Request => StaticServerResponse) extends ServerResponse
 
@@ -23,6 +23,36 @@ object GET {
 object POST {
     def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
         ServerRoute(Post, path, response, params)
+}
+
+object PUT {
+    def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
+        ServerRoute(Put, path, response, params)
+}
+
+object DELETE {
+    def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
+        ServerRoute(Delete, path, response, params)
+}
+
+object HEAD {
+    def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
+        ServerRoute(Head, path, response, params)
+}
+
+object OPTIONS {
+    def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
+        ServerRoute(Options, path, response, params)
+}
+
+object TRACE {
+    def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
+        ServerRoute(Trace, path, response, params)
+}
+
+object PATCH {
+    def apply(path: String, params: Map[String, String] = Map(), response: ServerResponse): ServerRoute =
+        ServerRoute(Patch, path, response, params)
 }
 
 class StubServer(port: Int, routes: ServerRoute*) {

@@ -69,10 +69,10 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
         testParams(request, route.params)
     }
 
-    private def makeResponse(response: Response, dynamicResponse: StaticServerResponse) {
-        response.setValue("Content-Type", dynamicResponse.contentType.toString)
-        response.setCode(dynamicResponse.code)
-        response.getPrintStream.println(dynamicResponse.body)
+    private def makeResponse(response: Response, serverResponse: StaticServerResponse) {
+        response.setValue("Content-Type", serverResponse.contentType.toString)
+        response.setCode(serverResponse.code)
+        response.getPrintStream.println(serverResponse.body)
     }
 
     private def testPath(request: Request, route: ServerRoute): Boolean = {

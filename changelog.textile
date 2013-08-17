@@ -30,11 +30,11 @@ h2. Version 0.4
         ** stub server fixture
         ** scala 2.10 compilation
         ** abandon scala 2.9 compilation
-        ** println request when defualtResponse
+        ** println request when defaultResponse
 
 h2. Version 0.5
     * delivery date : ???
     * developer(s)  : bourdon.ugo@gmail.com
     * features      :
-        ** add new Content type helper - application/json etc ...
-        ** 
+        ** use 5.1.5 simpleframework version (instead of 4 version)
+        ** PUT, DELETE, OPTIONS, PATCH, HEAD request
