@@ -5,7 +5,7 @@ with an API dedicated to define server's routes (request-response), start & stop
 
 This works in a Java 6+ environment
 
-The actual project release version is "0.4":http://search.maven.org/#search|ga|1|simplyscala-server
+The actual project release version is "0.5":http://search.maven.org/#search|ga|1|simplyscala-server
 
 Be careful ! Between 0.2 & 0.3 version :
     * signature of ServerResponse was change(ServerResponse => StaticServerResponse & DynamicServerResponse). It is not retro-compatible !
@@ -29,11 +29,11 @@ h2. Roadmap
 * build in scala 2.10                                                                  OK
 * Stub Server Fixture Trait                                                            OK
 
-* PUT request                                                                          WIP
-* HEAD request                                                                         WIP
-* DELETE request                                                                       WIP
-* OTPIONS, PATCH request                                                               WIP
-* set response headers                                                                 WIP
+* PUT request                                                                          OK
+* HEAD request                                                                         OK
+* DELETE request                                                                       OK
+* OTPIONS, PATCH request                                                               OK
+* set response headers                                                                 OK
 
 * %{color:orange;padding-right:330px}Java API%                                         TODO
 * extends simplyscala-server                                                           TODO
@@ -51,14 +51,14 @@ h3. Maven dependency
     <dependency>
         <groupId>com.github.simplyscala</groupId>
         <artifactId>simplyscala-server_2.10</artifactId>
-        <version>0.4</version>
+        <version>0.5</version>
     </dependency>
 </code></pre>
 
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.4"
+    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.5"
 </code></pre>
 
     Only the following Scala versions 2.10.x are currently supported.
@@ -71,14 +71,14 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "com.github.simplyscala" %% "simplyscala-server" % "0.4"
+            "com.github.simplyscala" %% "simplyscala-server" % "0.5"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-"0.4 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/simplyscala-server_2.10/0.4/simplyscala-server_2.10-0.4.jar
+"0.5 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/simplyscala-server_2.10/0.5/simplyscala-server_2.10-0.5.jar
 
 h3. Try SNAPSHOT version
 
@@ -101,7 +101,7 @@ h4. with Maven
    <dependency>
       <groupId>com.github.simplyscala</groupId>
       <artifactId>simplyscala-server_2.10</artifactId>
-      <version>0.5-SNAPSHOT</version>
+      <version>0.6-SNAPSHOT</version>
     </dependency>
 </code></pre>
 
@@ -110,7 +110,7 @@ h4. with SBT
 <pre><code>
    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
-   libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.5-SNAPSHOT"
+   libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.6-SNAPSHOT"
 </code></pre>
 
 h2. Usage
