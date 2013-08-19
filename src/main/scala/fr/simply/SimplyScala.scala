@@ -4,6 +4,7 @@ import org.simpleframework.http.core.Container
 import org.simpleframework.http.Response
 import org.simpleframework.http.Request
 import org.simpleframework.transport.Server
+import java.nio.charset.Charset
 
 class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRoute]) extends Container {
 
@@ -70,11 +71,11 @@ class SimplyScala(defaultResponse: StaticServerResponse, routes: List[ServerRout
     }
 
     private def makeResponse(response: Response, serverResponse: StaticServerResponse) {
-        response.setValue("Content-Type", serverResponse.contentType.toString)
+        response.setContentType(serverResponse.contentType.toString)
         response.setCode(serverResponse.code)
         serverResponse.headers.foreach { case (k,v) => response.setValue(k,v) }
 
-        response.getPrintStream.println(serverResponse.body)
+        response.getPrintStream.write(serverResponse.body.getBytes(Charset.forName("UTF-8")))
     }
 
     private def testPath(request: Request, route: ServerRoute): Boolean = {
