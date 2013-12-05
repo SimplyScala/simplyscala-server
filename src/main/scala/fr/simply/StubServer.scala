@@ -5,6 +5,7 @@ import java.net.{BindException, InetSocketAddress, SocketAddress}
 import util.{Text_Plain, ContentType}
 import org.simpleframework.http.Request
 import org.simpleframework.http.core.ContainerServer
+import fr.simply.internal.api._
 
 case class ServerRoute(restVerb: RestVerb,
                        path: String,
