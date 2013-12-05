@@ -11,4 +11,3 @@ notifications:
       - bourdon.ugo@gmail.com
 jdk:
   - openjdk7
-  - oraclejdk7
