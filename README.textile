@@ -1,6 +1,6 @@
 h1. SIMPLY SCALA SERVER
 
-"Travis CI":(https://api.travis-ci.org/SimplyScala/simplyscala-server.png)
+!https://api.travis-ci.org/SimplyScala/simplyscala-server.png!
 
 This project provides a fast & ultra-lightweight http server (with "simpleframework":http://www.simpleframework.org/)
 with an API dedicated to define server's routes (request-response), start & stop server.
